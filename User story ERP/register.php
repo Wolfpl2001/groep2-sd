@@ -1,8 +1,9 @@
 <?php
 session_start();
+if(!isset($_SESSION['user_type'])) header('Location: index.php');
+if($_SESSION['user_type'] == 'user') header('Location: index.php');
 
 include 'config.php';
-include 'login.php';
 
 if(isset($_POST['lang'])){}
 
@@ -14,8 +15,12 @@ if(isset($_POST['submit'])){
     $pass = md5($_POST['password']);
     $cpass = md5($_POST['cpassword']);
     $user_type = $_POST['user_type'];
+    $bday = $_POST['bday'];
+    $infix = $_POST['infix'];
+    $workplace = $_POST['workplace'];
+    $function = $_POST['function'];
 
-    $select = "SELECT * FROM user_form WHERE email = '$email' && password = '$pass' ";
+    $select = "SELECT * FROM medewerkers WHERE Werkmail = '$email' && password = '$pass' ";
 
     $result = mysqli_query($conn, $select);
 
@@ -27,9 +32,9 @@ if(isset($_POST['submit'])){
         if($pass != $cpass){
             $error[] = $lang['error_password'];
         }else{
-            $insert = "INSERT INTO user_form(LastName, FirstName, password, user_type, email) VALUES ('$lname','$name','$pass','$user_type','$email')";
+            $insert = "INSERT INTO medewerkers(Achternaam, Tussenvoegsel, Voornaam, password, user_type, Werkmail, Geboortedatum, Kantoorruimte, Functie) VALUES ('$lname','$infix','$name','$pass','$user_type','$email','$bday','$workplace','$function')";
             mysqli_query($conn, $insert);
-            header('location:admin_page.php');
+            header('location:main.php');
         }
 
     }
@@ -47,7 +52,7 @@ if(isset($_POST['submit'])){
         <div class="form-box">
             <div class="form-value">
                 <div name="lang">
-                    <a href="home.html"><ion-icon name="arrow-back-outline" class="arrow"></ion-icon></a>
+                    <a href="main.php"><ion-icon name="arrow-back-outline" class="arrow"></ion-icon></a>
                     <a href="register.php?lang=nl"><img src="img/NL.png" alt="NL Flag" class="flag-nl" href="nl-index.html" name="lang"></a>
                     <a href="register.php?lang=en"><img src="img/eng.png" alt="ENG Flag" class="flag-en used"></a>
                 </div>
@@ -67,6 +72,11 @@ if(isset($_POST['submit'])){
                         </div>
                         <div class="inputbox">
                             <ion-icon name="person-outline"></ion-icon>
+                            <input type="text" name="infix">
+                            <label for=""><?php echo $lang['insertion']?></label>
+                        </div>
+                        <div class="inputbox">
+                            <ion-icon name="person-outline"></ion-icon>
                             <input type="text" name="lname" required>
                             <label for=""><?php echo $lang['Lname']?></label>
                         </div>
@@ -77,15 +87,29 @@ if(isset($_POST['submit'])){
                     </div>
                     <div class="inputbox">
                         <ion-icon name="lock-closed-outline"></ion-icon>
-                        <input type="password" name="password" required>
+                        <input type="password" name="password" min="5" required>
                         <label for=""><?php echo $lang['passwor']?></label>
                     </div>
                     <div class="inputbox">
                         <ion-icon name="lock-closed-outline"></ion-icon>
-                        <input type="password" name="cpassword" required>
+                        <input type="password" name="cpassword" min="5" required>
                         <label for=""><?php echo $lang['Confirm_Password']?></label>
                     </div>
+                    <div class="inputbox">
+                            <ion-icon name="person-outline"></ion-icon>
+                            <input type="date" name="bday"  required>
+                            <label for=""><?php echo $lang['Birth']?></label>
                     <div>
+                    <div class="inputbox">
+                            <ion-icon name="person-outline"></ion-icon>
+                            <input type="text" name="function" required>
+                            <label for=""><?php echo $lang['Function']?></label>
+                        </div>
+                        <div class="inputbox">
+                            <ion-icon name="person-outline"></ion-icon>
+                            <input type="text" name="workplace" required>
+                            <label for=""><?php echo $lang['Office']?></label>
+                        </div>
                         <select name="user_type">
                             <option value="user"><?php echo $lang['user']?></option>
                             <option value="admin"><?php echo $lang['admin']?></option>

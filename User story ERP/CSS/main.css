@@ -156,7 +156,7 @@ a{
 .flag-nl{
     position: absolute;
     top: 20%;
-    right: 45px;
+    right: 120px;
     width: 40px;
     height: 40px;
     border-radius: 20px;
@@ -165,7 +165,7 @@ a{
 .flag-en {
     position: absolute;
     top: 20%;
-    right: 20px;
+    right: 130px;
     width: 40px;
     height: 40px;
     border-radius: 20px
@@ -213,6 +213,24 @@ top: -5px;
     position: relative;
     padding: center;
     margin-left: 50%;
+}
+.logout{
+    position: absolute;
+    right: 20px;
+    height: 40px;
+    width: 40px;
+    top: 20%;
+    background-color: transparent;
+    backdrop-filter: blur(50px);
+    border: 1px solid orange;
+    border-radius: 40px;
+    color: black;
+
+}
+.logouticon{
+    height: 20px;
+    width: 20px;
+    top: 3%;
 }
 @media only screen and (max-width: 768px) {
     .db{

@@ -1,3 +1,5 @@
+// update password UPDATE `medewerkers` SET `user_type` = 'user' WHERE `medewerkers`.`ID` = 1;
+
 <?php
 session_start();
 
@@ -6,33 +8,16 @@ if(isset($_POST['Login'])){
 
     $Personid = mysqli_real_escape_string($conn,$_POST['Personid']);
     $pass = md5($_POST['password']);
+    $npass = md5($_POST['npassword']);
+    $npassc = md5($_POST['cpassword']);
     
     $select = "SELECT * FROM medewerkers WHERE ID = '$Personid' && password = '$pass' ";
     
     $result = mysqli_query($conn, $select);
-    
-    if(mysqli_num_rows($result) > 0){
-    
-        $row = mysqli_fetch_array($result);
-    
-        if($row['user_type'] == 'admin'){
-    
-            $_SESSION['user_name'] = $row['Voornaam'];
-            $_SESSION['user_type'] = $row['user_type'];
-            $_SESSION['user_lname'] = $row['Achternaam'];
-            header('Location: main.php');
-          
-    
-        }elseif($row['user_type'] == 'user'){
-    
-            $_SESSION['user_name'] = $row['Voornaam'];
-            $_SESSION['user_type'] = $row['user_type'];
-            $_SESSION['user_lname'] = $row['Achternaam'];
-            header('location:user_main.php');
-        }
-    }elseif(
-        $error[] = $lang['error_loggin']
-        );
+    if($npass == $npassc && $pass != $npass) {
+        update password UPDATE `medewerkers` SET `user_type` = 'user' WHERE `medewerkers`.`ID` = 1;
+        mysqli_query($conn, $insert);
+        header('location:main.php');
     }
 ?>
 

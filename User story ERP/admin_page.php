@@ -4,7 +4,8 @@ session_start();
 include 'config.php';
 
 if(!isset($_SESSION['user_name'])) header('Location: index.php');
-print_r($_SESSION);
+if($_SESSION['user_type'] == 'user') header('Location: index.php');
+
 $utype= $_SESSION['user_type'];
 $name = "";
 $tussenvoegsel = "";

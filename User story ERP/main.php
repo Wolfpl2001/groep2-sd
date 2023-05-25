@@ -2,10 +2,11 @@
 session_start();
 include 'config.php';
 if(!isset($_SESSION['user_name'])) header('Location: index.php');
+if($_SESSION['user_type'] == 'user') header('Location: index.php');
 $uname = $_SESSION['user_name'];
 $utype = $_SESSION['user_type'];
 $lname = $_SESSION['user_lname'];
-
+if(isset($_POST['logout'])) session_destroy() .  header('Location: index.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +28,9 @@ $lname = $_SESSION['user_lname'];
           <!-- Lang Change -->
           <a href="main.php?lang=en"><img src="img/eng.png" alt="Eng Lang Flag" class="flag-en"></a>
           <a href="main.php?lang=nl"><img src="img/nl.png" alt="NL Lang Flag" class="flag-nl"></a>
+          <form method="post">
+          <button name='logout' class='logout'><ion-icon name="log-out-outline" class='logouticon'></ion-icon></button>
+          </form>
         </div>
         <table class="table">
               <tr class="center">
