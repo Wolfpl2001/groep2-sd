@@ -30,5 +30,9 @@
         "Personeel_ID" => "Personeel ID",
         "register_user" => "Nieuwe gebruiker registreren",
         "reg_hours" => "Uren registreren",
+        "oudpasswor" => "Oude wachtwoord",
+        "npasswor" => "Nieuwe Wachtwoord",
+        "cnpasswor" => "Bevestig nieuw wachtwoord",
+        "reset_password" => "Wachtwoord resetten"
     );
 ?>

@@ -30,5 +30,10 @@
         "Personeel_ID" => "Personal ID",
         "register_user" => "Register new user",
         "reg_hours" => "Register Hours",
+        "oudpasswor" => "old password",
+        "npasswor" => "New password",
+        "cnpasswor" => "Confirm new password",
+        "reset_password" => "Reset Password"
+
     );
 ?>

@@ -1,42 +1,43 @@
-// update password UPDATE `medewerkers` SET `user_type` = 'user' WHERE `medewerkers`.`ID` = 1;
 
 <?php
 session_start();
 
 include 'config.php';
-if(isset($_POST['Login'])){
+if(isset($_POST['Reset'])){
 
-    $Personid = mysqli_real_escape_string($conn,$_POST['Personid']);
+    $Personid = $_POST['Personid'];
     $pass = md5($_POST['password']);
     $npass = md5($_POST['npassword']);
-    $npassc = md5($_POST['cpassword']);
+    $npassc = md5($_POST['cnpassword']);
     
     $select = "SELECT * FROM medewerkers WHERE ID = '$Personid' && password = '$pass' ";
     
     $result = mysqli_query($conn, $select);
     if($npass == $npassc && $pass != $npass) {
-        update password UPDATE `medewerkers` SET `user_type` = 'user' WHERE `medewerkers`.`ID` = 1;
-        mysqli_query($conn, $insert);
-        header('location:main.php');
+        $update = "UPDATE `medewerkers` SET `password`='$npass' WHERE ID=$Personid";
+        mysqli_query($conn, $update);
+        header('location:index.php');
+
     }
+}
 ?>
 
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="CSS/index.css">
+  <link rel="stylesheet" href="CSS/password.css">
   <title>GildeDEVops Database</title>
 </head>
 <body>
     <section>
         <div class="form-box">
             <div class="form-value">
-                <form action="index.php" method="post">
-                    <a href= "home.html"><ion-icon name="arrow-back-outline" class="arrow"></ion-icon></a>
+                <form action="" method="post">
+                    <a href= "index.php"><ion-icon name="arrow-back-outline" class="arrow"></ion-icon></a>
                     <a href= "index.php?lang=nl"><img src="img/NL.png" alt="NL Flag" class="flag-nl" href="nl-index.html"></a>
                     <a href= "index.php?lang=en"> <img src="img/eng.png" alt="ENG Flag" class="flag-en used"></a>
-                    <h2><?php echo $lang['loggi']?></h2>
+                    <h2><?php echo $lang['reset_password']?></h2>
                     <?php
                     if(isset($error)){
                         foreach($error as $error){
@@ -52,13 +53,19 @@ if(isset($_POST['Login'])){
                     <div class="inputbox">
                         <ion-icon name="lock-closed-outline"></ion-icon>
                         <input type="password" name="password" required>
-                        <label for=""><?php echo $lang['passwor']?></label>
+                        <label for=""><?php echo $lang['oudpasswor']?></label>
                     </div>
-                    <div class="forget">
-                        <label for=""><a href="#"><?php echo $lang['pforgot']?></a></label>
-                      
+                    <div class="inputbox">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        <input type="password" name="npassword" required>
+                        <label for=""><?php echo $lang['npasswor']?></label>
                     </div>
-                    <button name='Login'><?php echo $lang['loggi']?></button>
+                    <div class="inputbox">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        <input type="password" name="cnpassword" required>
+                        <label for=""><?php echo $lang['cnpasswor']?></label>
+                    </div>
+                    <button name='Reset'><?php echo $lang['loggi']?></button>
                 </form>
             </div>
         </div>

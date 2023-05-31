@@ -70,7 +70,7 @@ if(isset($_POST['Login'])){
                         <label for=""><?php echo $lang['passwor']?></label>
                     </div>
                     <div class="forget">
-                        <label for=""><a href="#"><?php echo $lang['pforgot']?></a></label>
+                        <label for=""><a href="password.php"><?php echo $lang['pforgot']?></a></label>
                       
                     </div>
                     <button name='Login'><?php echo $lang['loggi']?></button>
