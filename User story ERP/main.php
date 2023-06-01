@@ -41,7 +41,7 @@ if(isset($_POST['logout'])) session_destroy() .  header('Location: index.php');
                 <th><a href="Opdrachten.php"><?php echo $lang['Assignments']?></a></th>
                 <th><a href="Klanten.php"> <?php echo $lang['Customers']?></a></th>
                 <th><a href="Register.php"> <?php echo $lang['register_user']?></a></th>
-                <th><a href=""> <?php echo $lang['reg_hours']?></a>
+                <th><a href="indexURS.php"> <?php echo $lang['reg_hours']?></a>
               </tr>
             </table>
 </table>
