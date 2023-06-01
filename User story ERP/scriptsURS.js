@@ -4,10 +4,12 @@ let timerId;
 let timer = 0;
 let start = document.querySelector('#start');
 let stop = document.querySelector('#stop');
-let reset = document.querySelector('#reset')
+let reset = document.querySelector('#reset');
+document.getElementById("demo").innerHTML = timer  ;
 
 function time() {
     console.log(++timer)
+    document.getElementById("demo").innerHTML = timer  ;
 };
 
 // start button
@@ -27,5 +29,6 @@ const resetBtn = document.querySelector ("#reset")
 resetBtn.addEventListener("click", function(event){
     timer = 0
     console.log(timer)
+    document.getElementById("demo").innerHTML = timer  ;
 });
 

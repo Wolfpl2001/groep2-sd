@@ -135,3 +135,9 @@ button{
     text-align: center;
     position: relative;
 }
+
+p {
+    color: white;
+    text-align: center;
+   font-size: 25px;
+}
