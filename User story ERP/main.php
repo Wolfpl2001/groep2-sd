@@ -6,7 +6,16 @@ if($_SESSION['user_type'] == 'user') header('Location: index.php');
 $uname = $_SESSION['user_name'];
 $utype = $_SESSION['user_type'];
 $lname = $_SESSION['user_lname'];
+$name = "";
+$tussenvoegsel = "";
+$achternaam = "";
+$gebortedatum = "";
+$functie = "";
+$werkemail = "";
+$rumte = "";
+$id = "";
 if(isset($_POST['logout'])) session_destroy() .  header('Location: index.php');
+$sql = "SELECT * FROM opdrachten order by `ID` DESC LIMIT 5";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +53,30 @@ if(isset($_POST['logout'])) session_destroy() .  header('Location: index.php');
                 <th><a href="indexURS.php"> <?php echo $lang['reg_hours']?></a>
               </tr>
             </table>
-</table>
+          <?php
+              if ($result == true) {
+                if ($result->num_rows > 0) {
+                // output data of each row
+                echo "<table class='table-db'><tr class='stick'><th>".$lang['ID']."</th><th>".$lang['Name']."</th><th>".$lang['insertion']."</th><th>".$lang['Lname']."</th><th>".$lang['Birth']."</th><th>".$lang['Function']."</th><th>".$lang['Wemail']."</th><th>".$lang['Office']."</th></tr>";
+                while($row = $result->fetch_assoc()) {
+                    $id = $row['ID'];
+                    $kid = $row['KlantID'];
+                    $Titel = $row['Titel'];
+                    $Omschrijving = $row['Omschrijving'];
+                    $Aanvraagdatum = $row['Aanvraagdatum'];
+                    $Benodigde = $row['Benodigde kennis'];
+                    $Contact = $row['Contact'];
+                    $tel = $row['Telefoon Nummer'];
+                    echo "<tr><td>". $id."</td><td>" .$kid. "</td><td>" . $Titel ."</td><td>" . $Omschrijving. "</td><td>" . $Aanvraagdatum."</td><td>" . $Benodigde."</td><td>" . $Contact. "</td><td>". $tel."</td></tr>";
+                }
+                echo "</table>";
+            } else {
+                echo "0 results";
+            }
+            } else {
+            echo "Error";
+            }
+            ?>
         </div>
     </section>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
