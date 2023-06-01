@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include 'configURS.php';
+include 'config.php';
 if(isset($_POST['Login'])){
 
     $Personid = mysqli_real_escape_string($conn,$_POST['Personid']);
