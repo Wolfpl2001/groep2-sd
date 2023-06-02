@@ -52,7 +52,7 @@ if(isset($_POST['submit'])){
         <div class="form-box">
             <div class="form-value">
                 <div name="lang">
-                    <a href="main.php"><ion-icon name="arrow-back-outline" class="arrow"></ion-icon></a>
+                    <a href="medewerkers.php"><ion-icon name="arrow-back-outline" class="arrow"></ion-icon></a>
                     <a href="register.php?lang=nl"><img src="img/NL.png" alt="NL Flag" class="flag-nl" href="nl-index.html" name="lang"></a>
                     <a href="register.php?lang=en"><img src="img/eng.png" alt="ENG Flag" class="flag-en used"></a>
                 </div>

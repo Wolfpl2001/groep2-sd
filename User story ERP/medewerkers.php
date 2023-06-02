@@ -54,6 +54,7 @@ $result = $conn->query($sql);
           <!-- Lang Change -->
           <a href="medewerkers.php?lang=en"><img src="img/eng.png" alt="Eng Lang Flag" class="flag-en"></a>
           <a href="medewerkers.php?lang=nl"><img src="img/nl.png" alt="NL Lang Flag" class="flag-nl"></a>
+          <a href="register.php"><ion-icon name="person-add-outline" class="add"></ion-icon></a>
         </div>
         <!-- Database Informations -->
         <div class="db">
@@ -61,7 +62,7 @@ $result = $conn->query($sql);
           <!-- searching site -->
           <form action="">
             <div class="inputbox">
-              <input type="text" name="search">
+              <input type="text" name="search" required>
               <label for=""><?php echo $lang['search']?></label>
             </div>
           </form>
