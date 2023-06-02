@@ -40,7 +40,7 @@ if(isset($_POST['Login'])){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="CSS/indexURS.css">
+  <link rel="stylesheet" href="CSS/URS.css">
   <title>GildeDEVops Database</title>
 </head>
 <body>
@@ -49,8 +49,8 @@ if(isset($_POST['Login'])){
             <div class="form-value">
                 <form action="index.php" method="post">
                     <a href= "main.php"><ion-icon name="arrow-back-outline" class="arrow"></ion-icon></a>
-                    <a href= "indexURS.php?lang=nl"><img src="img/NL.png" alt="NL Flag" class="flag-nl" href="nl-index.html"></a>
-                    <a href= "indexURS.php?lang=en"> <img src="img/eng.png" alt="ENG Flag" class="flag-en used"></a>
+                    <a href= "URS.php?lang=nl"><img src="img/NL.png" alt="NL Flag" class="flag-nl" href="nl-index.html"></a>
+                    <a href= "URS.php?lang=en"> <img src="img/eng.png" alt="ENG Flag" class="flag-en used"></a>
                     <h2><?php echo $lang['reg_hours']?></h2>
                     <?php
                     if(isset($error)){
