@@ -11,10 +11,6 @@ else if(isset($_GET['lang']) && $_SESSION['lang'] != $_GET['lang'] && !empty($_G
 
 require_once "languages/" . $_SESSION['lang'] . ".php";
 
-if(!isset($_SESSION['table']) && !isset($_GET['table'])){
-    $_SESSION['table'] = "staff";
-}
-
 
 $conn = mysqli_connect('localhost','root','','user_db');
 if ( mysqli_connect_errno() ) {

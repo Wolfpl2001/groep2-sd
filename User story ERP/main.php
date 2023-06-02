@@ -16,6 +16,7 @@ $rumte = "";
 $id = "";
 if(isset($_POST['logout'])) session_destroy() .  header('Location: index.php');
 $sql = "SELECT * FROM opdrachten order by `ID` DESC LIMIT 5";
+$result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,8 +43,6 @@ $sql = "SELECT * FROM opdrachten order by `ID` DESC LIMIT 5";
           </form>
         </div>
         <table class="table">
-              <tr class="center">
-              </tr>
               <tr class="table">
                 <th><a href="admin_page.php"><?php echo $lang['staff']?></a></th>
                 <th><a href="Werkzaamheden.php"><?php echo $lang['Activities']?></a></th>
@@ -52,12 +51,16 @@ $sql = "SELECT * FROM opdrachten order by `ID` DESC LIMIT 5";
                 <th><a href="Register.php"> <?php echo $lang['register_user']?></a></th>
                 <th><a href="indexURS.php"> <?php echo $lang['reg_hours']?></a>
               </tr>
-            </table>
-          <?php
+              <tr>
+                <th><H1>LAST</H1></th>
+                <th><h1>assignments</h1></th>
+              </tr>
+        </div>
+        <?php
               if ($result == true) {
                 if ($result->num_rows > 0) {
                 // output data of each row
-                echo "<table class='table-db'><tr class='stick'><th>".$lang['ID']."</th><th>".$lang['Name']."</th><th>".$lang['insertion']."</th><th>".$lang['Lname']."</th><th>".$lang['Birth']."</th><th>".$lang['Function']."</th><th>".$lang['Wemail']."</th><th>".$lang['Office']."</th></tr>";
+                echo "<tr class='table-db'><th>".$lang['ID']."</th><th>".$lang['Name']."</th><th>".$lang['insertion']."</th><th>".$lang['Lname']."</th><th>".$lang['Birth']."</th><th>".$lang['Function']."</th><th>".$lang['Wemail']."</th><th>".$lang['Office']."</th></tr>";
                 while($row = $result->fetch_assoc()) {
                     $id = $row['ID'];
                     $kid = $row['KlantID'];
@@ -67,7 +70,7 @@ $sql = "SELECT * FROM opdrachten order by `ID` DESC LIMIT 5";
                     $Benodigde = $row['Benodigde kennis'];
                     $Contact = $row['Contact'];
                     $tel = $row['Telefoon Nummer'];
-                    echo "<tr><td>". $id."</td><td>" .$kid. "</td><td>" . $Titel ."</td><td>" . $Omschrijving. "</td><td>" . $Aanvraagdatum."</td><td>" . $Benodigde."</td><td>" . $Contact. "</td><td>". $tel."</td></tr>";
+                    echo "<tr class='table-db'><td>". $id."</td><td>" .$kid. "</td><td>" . $Titel ."</td><td>" . $Omschrijving. "</td><td>" . $Aanvraagdatum."</td><td>" . $Benodigde."</td><td>" . $Contact. "</td><td>". $tel."</td></tr>";
                 }
                 echo "</table>";
             } else {
@@ -77,7 +80,6 @@ $sql = "SELECT * FROM opdrachten order by `ID` DESC LIMIT 5";
             echo "Error";
             }
             ?>
-        </div>
     </section>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

@@ -96,13 +96,12 @@ button {
     position: relative;
     background-color: transparent;
     backdrop-filter: blur(50px);
-    height: 90%;
+    height: 30%;
     width: 100%;
     align-self: center;
     border: 1px solid orange;
     border-radius: 40px;
     text-decoration: none;
-    margin-bottom: 30%;
 
 }
 .text{
@@ -119,12 +118,15 @@ button {
 
 }
 .table-db{
+    position: relative;
     text-align: center;
+    height: fit-content;
     text-decoration: none;
     width: 100%;
     background-color: transparent;
     backdrop-filter: blur(50px);
     color:#fff;
+    align-self: center;
 }
 .db{
     width: 100%;
@@ -149,9 +151,6 @@ float: left;
 a{
     text-decoration: none;
     color:#fff;
-}
-.stick{
-    position: static;
 }
 .flag-nl{
     position: absolute;
