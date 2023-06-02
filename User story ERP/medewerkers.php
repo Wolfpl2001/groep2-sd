@@ -52,8 +52,8 @@ $result = $conn->query($sql);
               </tr>
             </table>
           <!-- Lang Change -->
-          <a href="admin_page.php?lang=en"><img src="img/eng.png" alt="Eng Lang Flag" class="flag-en"></a>
-          <a href="admin_page.php?lang=nl"><img src="img/nl.png" alt="NL Lang Flag" class="flag-nl"></a>
+          <a href="medewerkers.php?lang=en"><img src="img/eng.png" alt="Eng Lang Flag" class="flag-en"></a>
+          <a href="medewerkers.php?lang=nl"><img src="img/nl.png" alt="NL Lang Flag" class="flag-nl"></a>
         </div>
         <!-- Database Informations -->
         <div class="db">

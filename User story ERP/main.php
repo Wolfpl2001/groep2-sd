@@ -44,7 +44,7 @@ $result = $conn->query($sql);
         </div>
         <table class="table">
               <tr class="table">
-                <th><a href="admin_page.php"><?php echo $lang['staff']?></a></th>
+                <th><a href="medewerkers.php"><?php echo $lang['staff']?></a></th>
                 <th><a href="Werkzaamheden.php"><?php echo $lang['Activities']?></a></th>
                 <th><a href="Opdrachten.php"><?php echo $lang['Assignments']?></a></th>
                 <th><a href="Klanten.php"> <?php echo $lang['Customers']?></a></th>
