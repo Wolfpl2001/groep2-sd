@@ -35,8 +35,8 @@ if(isset($_POST['Reset'])){
             <div class="form-value">
                 <form action="" method="post">
                     <a href= "index.php"><ion-icon name="arrow-back-outline" class="arrow"></ion-icon></a>
-                    <a href= "index.php?lang=nl"><img src="img/NL.png" alt="NL Flag" class="flag-nl" href="nl-index.html"></a>
-                    <a href= "index.php?lang=en"> <img src="img/eng.png" alt="ENG Flag" class="flag-en used"></a>
+                    <a href= "password.php?lang=nl"><img src="img/NL.png" alt="NL Flag" class="flag-nl" href="nl-index.html"></a>
+                    <a href= "password.php?lang=en"> <img src="img/eng.png" alt="ENG Flag" class="flag-en used"></a>
                     <h2><?php echo $lang['reset_password']?></h2>
                     <?php
                     if(isset($error)){
