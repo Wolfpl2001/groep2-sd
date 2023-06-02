@@ -13,6 +13,7 @@ function time() {
 };
 
 // start button
+// bug with timer cuz you can spam click the button
 const startBtn = document.querySelector ("#start");
 startBtn.addEventListener("click", function(event) {
     myInterval = setInterval(time, 1000);
