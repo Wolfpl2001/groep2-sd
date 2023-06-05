@@ -33,7 +33,7 @@ $result = $conn->query($sql);
 <html lang="en">
   <meta content="width=device-width">
 <head>
-  <link rel="stylesheet" href="CSS/user-site.css">
+  <link rel="stylesheet" href="CSS/admin-site.css">
   <link rel="icon" type="image/x-icon" href="../img/icon.ico">
   <title>GildeDEVops</title>
 </head>

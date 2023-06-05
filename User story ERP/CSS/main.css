@@ -5,7 +5,7 @@
     font-family: 'poppins',sans-serif;
 }
 body{
-    background-color: #0038ff;
+    background-color: #350194;
 }
 section{
     display: flex;
@@ -97,7 +97,7 @@ button {
     width: 100%;
     align-self: center;
     text-decoration: none;
-    top: -272px;
+    top: -305px;
     align-items: center;
     float: left;
     text-align: center;
@@ -105,10 +105,10 @@ button {
     font-size: 20px;
     background-color: #dd006a;
 }
-.table a:hover {
+.nav a:hover {
   color: black;
 }
-.table a.active {
+.nav a.active {
   background-color: #04AA6D;
   color: white;
 }

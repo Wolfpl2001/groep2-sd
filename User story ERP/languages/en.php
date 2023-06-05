@@ -33,7 +33,7 @@
         "oudpasswor" => "old password",
         "npasswor" => "New password",
         "cnpasswor" => "Confirm new password",
-        "reset_password" => "Reset Password"
-
+        "reset_password" => "Reset Password",
+        "home" => "Home",
     );
 ?>

@@ -33,6 +33,7 @@
         "oudpasswor" => "Oude wachtwoord",
         "npasswor" => "Nieuwe Wachtwoord",
         "cnpasswor" => "Bevestig nieuw wachtwoord",
-        "reset_password" => "Wachtwoord resetten"
+        "reset_password" => "Wachtwoord resetten",
+        "home" => "Startpagina",
     );
 ?>
