@@ -25,6 +25,7 @@ $result = $conn->query($sql);
   <link rel="stylesheet" href="CSS/main.css">
   <link rel="icon" type="image/x-icon" href="../img/icon.ico">
   <title>GildeDEVops</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <section>
@@ -38,24 +39,23 @@ $result = $conn->query($sql);
           <!-- Lang Change -->
           <a href="main.php?lang=en"><img src="img/eng.png" alt="Eng Lang Flag" class="flag-en"></a>
           <a href="main.php?lang=nl"><img src="img/nl.png" alt="NL Lang Flag" class="flag-nl"></a>
-          <form method="post">
+          <form method="post" class='formlout'>
           <button name='logout' class='logout'><ion-icon name="log-out-outline" class='logouticon'></ion-icon></button>
           </form>
         </div>
-        <table class="table">
-              <tr class="table">
-                <th><a href="medewerkers.php"><?php echo $lang['staff']?></a></th>
-                <th><a href="Werkzaamheden.php"><?php echo $lang['Activities']?></a></th>
-                <th><a href="Opdrachten.php"><?php echo $lang['Assignments']?></a></th>
-                <th><a href="Klanten.php"> <?php echo $lang['Customers']?></a></th>
-                <th><a href="Register.php"> <?php echo $lang['register_user']?></a></th>
-                <th><a href="URS.php"> <?php echo $lang['reg_hours']?></a>
-              </tr>
-              <tr>
-                <th><H1>LAST</H1></th>
-                <th><h1>assignments</h1></th>
-              </tr>
+        <div class='table'>
+                <a href="medewerkers.php" class='atable'><ion-icon name="person-outline"></ion-icon><?php echo $lang['staff']?></a>
+                <a href="Werkzaamheden.php" class='atable'><ion-icon name="construct-outline"></ion-icon><?php echo $lang['Activities']?></a>
+                <a href="Opdrachten.php" class='atable'><ion-icon name="construct-outline"></ion-icon><?php echo $lang['Assignments']?></a>
+                <a href="Klanten.php" class='atable'><ion-icon name="person-outline"></ion-icon><?php echo $lang['Customers']?></a>
+                <a href="URS.php" class='atable'><ion-icon name="hourglass-outline"></ion-icon><?php echo $lang['reg_hours']?></a>
+                
+
         </div>
+        <table class="table1">
+        <tr>
+          <th colspan="8"><H1>LAST assignments</H1></th>
+          <tr>
         <?php
               if ($result == true) {
                 if ($result->num_rows > 0) {

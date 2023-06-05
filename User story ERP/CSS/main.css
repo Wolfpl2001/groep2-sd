@@ -71,7 +71,7 @@ h2{
     position: absolute;
     size-adjust: 20%; 
     display: flex;
-    background: transparent;
+    background-color:white;
     border: 1px solid orange;
     backdrop-filter: blur(70px);
     border-radius: 40px;
@@ -102,7 +102,36 @@ button {
     border: 1px solid orange;
     border-radius: 40px;
     text-decoration: none;
-
+    top: -250px;
+    align-items: center;
+    float: left;
+    text-align: center;
+    word-spacing: 30px;
+    font-size: 20px;
+}
+.atable{
+    background-color: orange;
+    border: 1px solid orange;
+    border-radius: 40px;
+}
+.table a:hover {
+  color: black;
+  backdrop-filter: blur(100px);
+}
+.table a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+.table1{
+    position: absolute;
+    background-color: transparent;
+    backdrop-filter: blur(50px);
+    height: 30%;
+    width: 100%;
+    align-self: center;
+    border: 1px solid orange;
+    border-radius: 40px;
+    text-decoration: none;
 }
 .text{
     background-color: transparent;
@@ -223,8 +252,14 @@ top: -5px;
     backdrop-filter: blur(50px);
     border: 1px solid orange;
     border-radius: 40px;
+    color: white;
+    background-color: orange;
+}
+.logout a:hover{
     color: black;
-
+}
+.formlout a.hover{
+    color: black;
 }
 .logouticon{
     height: 20px;
