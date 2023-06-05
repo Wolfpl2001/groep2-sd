@@ -94,7 +94,7 @@ button {
 .nav{
     background-color: #dd006a;
     position: absolute;
-    margin-top: 70px;
+    margin-top: 39px;
     top:auto;
     width: 100%;
     text-align: center;
@@ -146,7 +146,7 @@ a{
 .flag-nl{
     position: absolute;
     top: 20%;
-    right: 45px;
+    right: 120px;
     width: 40px;
     height: 40px;
     border-radius: 20px;
@@ -155,7 +155,7 @@ a{
 .flag-en {
     position: absolute;
     top: 20%;
-    right: 20px;
+    right: 130px;
     width: 40px;
     height: 40px;
     border-radius: 20px;
@@ -166,7 +166,7 @@ a{
 .add {
     position: absolute;
     top: 20%;
-    right: 135px;
+    right: 180px;
     width: 40px;
     height: 40px;
     border-radius: 20px;
@@ -186,7 +186,7 @@ a{
 .inputbox{
     position: absolute;
     right: 4%;
-    top: 20px;
+    top: 60px;
     width: 200px;
     border-bottom: 2px solid #fff;
     background-color: transparent;
@@ -200,6 +200,17 @@ a{
     font-size: 1em;
     pointer-events: none;
     transition: .5s;
+}
+.logout{
+    position: absolute;
+    right: 28px;
+    height: 43px;
+    width: 43px;
+    top: 20%;
+    border-radius: 40px;
+    color: white;
+    border-color: orange;
+    background-color: orange;
 }
 input:focus ~ label,
 input:valid ~ label{

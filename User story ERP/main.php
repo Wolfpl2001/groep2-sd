@@ -39,11 +39,12 @@ $result = $conn->query($sql);
           <!-- Lang Change -->
           <a href="main.php?lang=en"><img src="img/eng.png" alt="Eng Lang Flag" class="flag-en"></a>
           <a href="main.php?lang=nl"><img src="img/nl.png" alt="NL Lang Flag" class="flag-nl"></a>
+          <a href="URS.php"><ion-icon name="hourglass-outline" class="hreg"></ion-icon></a>
           <form method="post" class='formlout'>
           <button name='logout' class='logout'><ion-icon name="log-out-outline" class='logouticon'></ion-icon></button>
           </form>
         </div>
-        
+
         <?php include 'nav.php'; ?>
 
         <table class="table1">

@@ -92,7 +92,7 @@ button {
 .used {
     color: black;
 }
-.table{
+.nav{
     position: relative;
     width: 100%;
     align-self: center;
@@ -251,6 +251,16 @@ top: -5px;
     height: 20px;
     width: 20px;
     top: 3%;
+}
+.hreg{
+    height: 40px;
+    width: 40px;
+    top: 3%;
+    background-color: orange;
+    border-radius: 40px;
+    position: absolute;
+    top: 20%;
+    right: 180px;
 }
 tbody {
     width: 100%;

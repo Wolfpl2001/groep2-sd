@@ -41,19 +41,13 @@ $result = $conn->query($sql);
     <section>
       <!-- Main menu line on top of site -->
       <div class='nav'>
-                <a href="main.php"></a>
-                <a href="medewerkers.php" class='atable'><ion-icon name="person-outline"></ion-icon><?php echo $lang['staff']?></a>
-                <a href="Werkzaamheden.php" class='atable'><ion-icon name="construct-outline"></ion-icon><?php echo $lang['Activities']?></a>
-                <a href="Opdrachten.php" class='atable'><ion-icon name="construct-outline"></ion-icon><?php echo $lang['Assignments']?></a>
-                <a href="Klanten.php" class='atable'><ion-icon name="person-outline"></ion-icon><?php echo $lang['Customers']?></a>
-                <a href="URS.php" class='atable'><ion-icon name="hourglass-outline"></ion-icon><?php echo $lang['reg_hours']?></a>
-                <form action="">
-                  <div class="inputbox">
-                    <input type="text" name="search" required>
-                    <label for=""><?php echo $lang['search']?></label>
-                    <a href="medewerkers.php"><ion-icon name="close-outline"></ion-icon></a>
-                  </div>
-                </form>
+                <?php include 'nav.php';?>
+                <div class="inputbox">
+                  <input type="text" name="search" required>
+                  <label for=""><?php echo $lang['search']?></label>
+                  <a href="medewerkers.php"><ion-icon name="close-outline"></ion-icon></a>
+                </div>
+              </form>
         </div>
         <div class="main-menu">
           <img src="img/logo.jpg" alt="logo" class="logo">
@@ -61,6 +55,9 @@ $result = $conn->query($sql);
           <a href="medewerkers.php?lang=en"><img src="img/eng.png" alt="Eng Lang Flag" class="flag-en"></a>
           <a href="medewerkers.php?lang=nl"><img src="img/nl.png" alt="NL Lang Flag" class="flag-nl"></a>
           <a href="register.php"><ion-icon name="person-add-outline" class="add"></ion-icon></a>
+          <form method="post" class='formlout'>
+            <button name='logout' class='logout'><ion-icon name="log-out-outline" class='logouticon'></ion-icon></button>
+          </form>
         </div>
         <!-- Database Informations -->
         <div class="db">
