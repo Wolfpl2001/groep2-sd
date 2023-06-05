@@ -34,7 +34,7 @@ $result = $conn->query($sql);
           <a href="https://www.gildeopleidingen.nl"><img src="img/logo.jpg" alt="logo" class="logo"></a>
           <!-- Main table with links to sites -->
           <div class="text">
-          <h3 class="center"><?php echo $lang['Welcome']?> <?php echo $utype ?> <?php echo $uname?> <?php echo $lname?></h3><h3 class=color></h3>
+          <!--<h3 class="center"><?php echo $lang['Welcome']?> <?php echo $utype ?> <?php echo $uname?> <?php echo $lname?></h3><h3 class=color></h3>-->
           </div>
           <!-- Lang Change -->
           <a href="main.php?lang=en"><img src="img/eng.png" alt="Eng Lang Flag" class="flag-en"></a>
@@ -43,15 +43,9 @@ $result = $conn->query($sql);
           <button name='logout' class='logout'><ion-icon name="log-out-outline" class='logouticon'></ion-icon></button>
           </form>
         </div>
-        <div class='table'>
-                <a href="medewerkers.php" class='atable'><ion-icon name="person-outline"></ion-icon><?php echo $lang['staff']?></a>
-                <a href="Werkzaamheden.php" class='atable'><ion-icon name="construct-outline"></ion-icon><?php echo $lang['Activities']?></a>
-                <a href="Opdrachten.php" class='atable'><ion-icon name="construct-outline"></ion-icon><?php echo $lang['Assignments']?></a>
-                <a href="Klanten.php" class='atable'><ion-icon name="person-outline"></ion-icon><?php echo $lang['Customers']?></a>
-                <a href="URS.php" class='atable'><ion-icon name="hourglass-outline"></ion-icon><?php echo $lang['reg_hours']?></a>
-                
+        
+        <?php include 'nav.php'; ?>
 
-        </div>
         <table class="table1">
         <tr>
           <th colspan="8"><H1>LAST assignments</H1></th>

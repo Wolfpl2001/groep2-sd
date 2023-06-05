@@ -40,17 +40,23 @@ $result = $conn->query($sql);
 <body>
     <section>
       <!-- Main menu line on top of site -->
+      <div class='nav'>
+                <a href="main.php"></a>
+                <a href="medewerkers.php" class='atable'><ion-icon name="person-outline"></ion-icon><?php echo $lang['staff']?></a>
+                <a href="Werkzaamheden.php" class='atable'><ion-icon name="construct-outline"></ion-icon><?php echo $lang['Activities']?></a>
+                <a href="Opdrachten.php" class='atable'><ion-icon name="construct-outline"></ion-icon><?php echo $lang['Assignments']?></a>
+                <a href="Klanten.php" class='atable'><ion-icon name="person-outline"></ion-icon><?php echo $lang['Customers']?></a>
+                <a href="URS.php" class='atable'><ion-icon name="hourglass-outline"></ion-icon><?php echo $lang['reg_hours']?></a>
+                <form action="">
+                  <div class="inputbox">
+                    <input type="text" name="search" required>
+                    <label for=""><?php echo $lang['search']?></label>
+                    <a href="medewerkers.php"><ion-icon name="close-outline"></ion-icon></a>
+                  </div>
+                </form>
+        </div>
         <div class="main-menu">
           <img src="img/logo.jpg" alt="logo" class="logo">
-          <!-- Main table with links to sites -->
-            <table class="table">
-              <tr class="table">
-                <th><a href=""><?php echo $lang['staff']?></a></th>
-                <th><a href="Werkzaamheden.php"><?php echo $lang['Activities']?></a></th>
-                <th><a href="Opdrachten.php"><?php echo $lang['Assignments']?></a></th>
-                <th><a href="Klanten.php"> <?php echo $lang['Customers']?></a></th>
-              </tr>
-            </table>
           <!-- Lang Change -->
           <a href="medewerkers.php?lang=en"><img src="img/eng.png" alt="Eng Lang Flag" class="flag-en"></a>
           <a href="medewerkers.php?lang=nl"><img src="img/nl.png" alt="NL Lang Flag" class="flag-nl"></a>
@@ -60,12 +66,7 @@ $result = $conn->query($sql);
         <div class="db">
           <h1 class=h1><?php echo $lang['db_info']?>: <?php echo $lang['staff']?></h1>
           <!-- searching site -->
-          <form action="">
-            <div class="inputbox">
-              <input type="text" name="search" required>
-              <label for=""><?php echo $lang['search']?></label>
-            </div>
-          </form>
+          
           <!-- informations from datebase are seeing  on site -->
           <?php
               if ($result == true) {
