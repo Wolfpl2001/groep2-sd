@@ -35,5 +35,13 @@
         "cnpasswor" => "Bevestig nieuw wachtwoord",
         "reset_password" => "Wachtwoord resetten",
         "home" => "Startpagina",
+        "Lassignments"=> "LAATSTE opdrachten",
+        "kid"=> "Klant ID",
+        "title"=> "Titel",
+        "description" => "Omschrijving",
+        "adate" => "Application date",
+        "rknowledge"=> "Benodigde kennis",
+        "contact"=> "Contact",
+        "pnumber" => "Telefoonnummer",
     );
 ?>

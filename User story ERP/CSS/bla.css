@@ -15,32 +15,19 @@ section{
     background-position: center;
     background-size: cover;
 }
-.form-box{
-    position: absolute;
-    width: 500px;
-    height: auto;
-    background: transparent;
-    border: 1px solid rgba(255, 188, 3, 1);
-    border-radius: 20px;
-    backdrop-filter: blur(50px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    right: 60%;
-
-}
 .form-box1{
     position: absolute;
-    width: 500px;
-    height: auto;
+    width: 60%;
+    height: 750px;
     background: transparent;
     border: 1px solid rgba(255, 188, 3, 1);
     border-radius: 20px;
     backdrop-filter: blur(50px);
     display: flex;
-    justify-content: center;
     align-items: center;
-    right:10%;
+    justify-content: center;
+    padding-left: 3%;
+    LEFT:15%;
 
 }
 h2{
@@ -48,12 +35,20 @@ h2{
     color: #fff;
     text-align: center;
 }
+
 .inputbox{
     position: relative;
     margin: 30px 0;
     width: 310px;
+    display: flex;
+    align-items: center;
     border-bottom: 2px solid #fff;
 }
+.imputbox:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 .inputbox label{
     position: absolute;
     top: 50%;
@@ -165,4 +160,8 @@ h1{
     color: white;
     text-decoration: none;
     text-align: center;
+}
+.secondtable{
+    margin-left: auto;
+    display: flex;
 }

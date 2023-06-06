@@ -35,5 +35,13 @@
         "cnpasswor" => "Confirm new password",
         "reset_password" => "Reset Password",
         "home" => "Home",
+        "Lassignments"=> "LAST assignments",
+        "kid"=> "Customers ID",
+        "title"=> "Title",
+        "description" => "description",
+        "adate" => "Aanvraagdatum",
+        "rknowledge"=> "Required knowledge",
+        "contact"=> "Contact",
+        "pnumber" => "Phone number",
     );
 ?>

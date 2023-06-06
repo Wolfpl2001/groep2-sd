@@ -49,13 +49,13 @@ $result = $conn->query($sql);
 
         <table class="table1">
         <tr>
-          <th colspan="8"><H1>LAST assignments</H1></th>
+          <th colspan="8"><H1><?php echo $lang['Lassignments']?></H1></th>
           <tr>
         <?php
               if ($result == true) {
                 if ($result->num_rows > 0) {
                 // output data of each row
-                echo "<tr class='table-db'><th>".$lang['ID']."</th><th>".$lang['Name']."</th><th>".$lang['insertion']."</th><th>".$lang['Lname']."</th><th>".$lang['Birth']."</th><th>".$lang['Function']."</th><th>".$lang['Wemail']."</th><th>".$lang['Office']."</th></tr>";
+                echo "<tr class='table-db'><th>".$lang['ID']."</th><th>".$lang['kid']."</th><th>".$lang['title']."</th><th>".$lang['description']."</th><th>".$lang['adate']."</th><th>".$lang['rknowledge']."</th><th>".$lang['pnumber']."</th><th>".$lang['Office']."</th></tr>";
                 while($row = $result->fetch_assoc()) {
                     $id = $row['ID'];
                     $kid = $row['KlantID'];

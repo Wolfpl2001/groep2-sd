@@ -29,6 +29,8 @@ if ($result == true) {
         $functie = $row['Functie'];
         $werkemail = $row['Werkmail'];
         $rumte = $row['Kantoorruimte'];
+        $pass = md5($row['password']);
+        $utype1 = $row['user_type'];
     }
 } else {
 echo "0 results";
@@ -37,26 +39,29 @@ echo "0 results";
 echo "Error";
 }
 
-if(isset($_POST['submit'])){
+if(isset($_POST['change'])){
 
-    $names = mysqli_real_escape_string($conn, $_POST['name']);
-    $email = mysqli_real_escape_string($conn,$_POST['email']);
-    $user_type = $_POST['user_type'];
+    $ids = $_GET['id'];
+    $name = $_POST['name'];
+    $ins = $_POST['ins'];
+    $lname = $_POST['Lname'];
+    $birth = $_POST['birth'];
+    $function = $_POST['Function'];
+    $wemail = $_POST['Wemail'];
+    $office = $_POST['Office'];
+    $password = md5($_POST['password']);
+    $utype = $_POST['user_type'];
+    
 
-    $result = mysqli_query($conn, $sql);
 
-    if(mysqli_num_rows($result) > 0){
-
-        $error[] = $lang['error_user'];
-
-    }else{
-        if($pass != $cpass){
-            $error[] = $lang['error_password'];
-        }else{
-            $insert = "UPDATE user_form SET Voornaam='$_post[name]', Tussenvoegsel='$_post[tussenvoegsel], Achternaam='$_post[achternaam],Geboortedatum='$_post[Geboortedatum],Functie='$_post[functie],Werkemail='$_post[werkemail],Kantoorruimte='$_post[rumte]' WHERE id = $ids";
-            mysqli_query($conn, $insert);
-            header('location:admin_page.php');
-        }
+    
+    $select = "SELECT * FROM medewerkers WHERE ID = '$Personid' && password = '$pass' ";
+    
+    $result = mysqli_query($conn, $select);
+    if($npass == $npassc && $pass != $npass) {
+        $update = "UPDATE `medewerkers` SET `Voornaam`='$name',`Tussenvoegsel`='$ins',`Achternaam`='$lname',`Geboortedatum`='$birth',`Functie`='$function',`Werkmail`='$wemail',`Kantoorruimte`='$office',`password`='$password',`user_type`='$utype' WHERE ID='$ids'";
+        mysqli_query($conn, $update);
+        header('location:medewerkers.php');
 
     }
 }
@@ -71,18 +76,11 @@ if(isset($_POST['submit'])){
 </head>
 <body>
     <section>
-        <div class="form-box">
-            <div class="form-value">
-                <?php
-  //while($row = $result->fetch_assoc()) {
-    echo "<h1>ID: ".$ids."</br>Name: ". $name."</br>Tussenvoegsel: ". $tussenvoegsel."</br>Achternaam: ". $achternaam."</br>Geboortedatum: ". $gebortedatum."</br>Functie: ". $functie."</br>Werkmail: ". $werkemail."</br>Kantoorruimte: ". $rumte."</h1>";
-                ?>
-            </div>
-        </div>
         <div class="form-box1">
             <div class="form-value">
-            <form action="register.php" method="post">
+            <form action="" method="post">
                         <h2><?php echo $lang['Change']?></h2>
+                    <div class='secondtable'>
                         <div class="inputbox">
                             <ion-icon name="person-outline"></ion-icon>
                             <input type="text" name="name" value="<?= $name ?>" required>
@@ -90,35 +88,51 @@ if(isset($_POST['submit'])){
                         </div>
                     <div class="inputbox">
                         <ion-icon name="person-outline"></ion-icon>
-                        <input type="text" name="ins" value="<?php echo $tussenvoegsel; ?>">
-                        <label for=""><?php echo $lang['insertion']?></label>
+                            <input type="text" name="ins" value="<?php echo $tussenvoegsel; ?>">
+                            <label for=""><?php echo $lang['insertion']?></label>
+                        </div>
                     </div>
-                    <div class="inputbox">
-                        <ion-icon name="person-outline"></ion-icon>
-                        <input type="text" name="Lname" value="<?php echo $achternaam; ?>" required>
-                        <label for=""><?php echo $lang['Lname']?></label>
+                    <div class='secondtable'>
+                        <div class="inputbox">
+                            <ion-icon name="person-outline"></ion-icon>
+                            <input type="text" name="Lname" value="<?php echo $achternaam; ?>" required>
+                            <label for=""><?php echo $lang['Lname']?></label>
+                        </div>
+                        <div class="inputbox">
+                            <input type="date" name="birth" value="<?php echo $gebortedatum; ?>">
+                            <label for=""><?php echo $lang['Birth']?></label>
+                        </div>
                     </div>
-                    <div class="inputbox">
-                    <input type="text" name="input" value="<?php echo $gebortedatum; ?>" required pattern="(?:19|20)/[0-9\]{2}-(?:(?:0\[1-9\]|1\[0-2\])/(?:0\[1-9\]|1\[0-9\]|2\[0-9\])|(?:(?!02)(?:0\[1-9\]|1\[0-2\])/(?:30))|(?:(?:0\[13578\]|1\[02\])-31))" title="Enter a date in this format YYYY/MM/DD"/>
-                        <label for=""><?php echo $lang['Birth']?></label>
+                    <div class='secondtable'>
+                        <div class="inputbox">
+                            <ion-icon name="build-outline"></ion-icon>
+                            <input type="Text" name="Function" value="<?php echo $functie; ?>" required>
+                            <label for=""><?php echo $lang['Function']?></label>
+                        </div>
+                        <div class="inputbox">
+                            <ion-icon name="mail-outline"></ion-icon>
+                            <input type="email" name="Wemail" value="<?php echo $werkemail; ?>" required>
+                            <label for=""><?php echo $lang['Wemail']?></label>
+                        </div>
                     </div>
-                    <div class="inputbox">
-                        <ion-icon name="lock-closed-outline"></ion-icon>
-                        <input type="Text" name="Function" value="<?php echo $functie; ?>" required>
-                        <label for=""><?php echo $lang['Function']?></label>
+                    <div class='secondtable'>
+                        <div class="inputbox">
+                            <ion-icon name="business-outline"></ion-icon>
+                            <input type="test" name="Office" value="<?php echo $rumte; ?>" required>
+                            <label for=""><?php echo $lang['Office']?></label>
+                        </div>
+                        <div class="inputbox">
+                            <ion-icon name="lock-closed-outline"></ion-icon>
+                            <input type="test" name="password" required>
+                            <label for=""><?php echo $lang['passwor']?></label>
+                        </div>
                     </div>
-                    <div class="inputbox">
-                        <ion-icon name="lock-closed-outline"></ion-icon>
-                        <input type="email" name="Wemail" value="<?php echo $werkemail; ?>" required>
-                        <label for=""><?php echo $lang['Wemail']?></label>
-                    </div>
-                    <div class="inputbox">
-                        <ion-icon name="lock-closed-outline"></ion-icon>
-                        <input type="test" name="Office" value="<?php echo $rumte; ?>" required>
-                        <label for=""><?php echo $lang['Office']?></label>
-                    </div>
+                    <select name="user_type" value="<?php echo $utype1?>">
+                            <option value="user"><?php echo $lang['user']?></option>
+                            <option value="admin"><?php echo $lang['admin']?></option>
+                        </select>
                     <p></p>
-                    <button type="submit" name='submit'><?php echo $lang['Change']?></button>
+                    <button type="submit" name='change'><?php echo $lang['Change']?></button>
                 </form>
             </div>
         </div>
