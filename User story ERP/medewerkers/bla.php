@@ -1,7 +1,9 @@
 <?php
 session_start();
+if(!isset($_SESSION['user_type'])) header('Location: ../index.php');
+if($_SESSION['user_type'] == 'user') header('Location: ../index.php');
 
-include 'config.php';
+include '../config.php';
 
 $ids = $_GET['id'];
 $name = "";

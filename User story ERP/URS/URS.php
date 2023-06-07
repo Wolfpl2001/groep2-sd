@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include 'config.php';
+include '../config.php';
 if(isset($_POST['Login'])){
 
     $Personid = mysqli_real_escape_string($conn,$_POST['Personid']);
@@ -40,7 +40,7 @@ if(isset($_POST['Login'])){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="CSS/URS.css">
+  <link rel="stylesheet" href="../CSS/URS.css">
   <title>GildeDEVops Database</title>
 </head>
 <body>

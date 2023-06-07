@@ -18,10 +18,10 @@ $id = "";
 $uname= $_SESSION['user_name'];
 // searching information from data base
 if (empty($_GET['search'])) {
-  $sql = "SELECT * FROM `medewerkers`";
+  $sql = "SELECT * FROM `klanten`";
 } else {
   $search_query = mysqli_real_escape_string($conn, $_GET['search']);
-  $sql = "SELECT * FROM `medewerkers` WHERE Voornaam LIKE '%$search_query%' OR Achternaam LIKE '%$search_query%' Or Tussenvoegsel LIKE '%$search_query%' OR Geboortedatum LIKE '%$search_query%' OR Functie LIKE '%$search_query%' OR id LIKE '%$search_query%' OR Werkmail LIKE '%$search_query%' OR Kantoorruimte LIKE '%$search_query%'";
+  $sql = "SELECT * FROM `klanten` WHERE ID LIKE '%$search_query%' OR Achternaam LIKE '%$search_query%' Or  Adres LIKE '%$search_query%' OR  Voornaam LIKE '%$search_query%' OR Tel LIKE '%$search_query%'";
 }
 
 $result = $conn->query($sql);
@@ -31,7 +31,7 @@ $result = $conn->query($sql);
 <html lang="en">
   <meta content="width=device-width">
 <head>
-  <link rel="stylesheet" href="CSS/admin-site.css">
+  <link rel="stylesheet" href="../CSS/admin-site.css">
   <link rel="icon" type="image/x-icon" href="../img/icon.ico">
   <title>GildeDEVops</title>
 </head>
@@ -39,7 +39,7 @@ $result = $conn->query($sql);
     <section>
       <!-- Main menu line on top of site -->
       <div class='nav'>
-                <?php include 'nav.php';?>
+                <?php include '../nav.php';?>
                 <div class="inputbox">
                   <input type="text" name="search" required>
                   <label for=""><?php echo $lang['search']?></label>
@@ -48,10 +48,10 @@ $result = $conn->query($sql);
               </form>
         </div>
         <div class="main-menu">
-          <img src="img/logo.jpg" alt="logo" class="logo">
+          <img src="../img/logo.jpg" alt="logo" class="logo">
           <!-- Lang Change -->
-          <a href="medewerkers.php?lang=en"><img src="img/eng.png" alt="Eng Lang Flag" class="flag-en"></a>
-          <a href="medewerkers.php?lang=nl"><img src="img/nl.png" alt="NL Lang Flag" class="flag-nl"></a>
+          <a href="medewerkers.php?lang=en"><img src="../img/eng.png" alt="Eng Lang Flag" class="flag-en"></a>
+          <a href="medewerkers.php?lang=nl"><img src="../img/nl.png" alt="NL Lang Flag" class="flag-nl"></a>
           <a href="register.php"><ion-icon name="person-add-outline" class="add"></ion-icon></a>
           <form method="post" class='formlout'>
             <button name='logout' class='logout'><ion-icon name="log-out-outline" class='logouticon'></ion-icon></button>

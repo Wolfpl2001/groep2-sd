@@ -3,8 +3,8 @@ session_start();
 // Include things from config.php
 include '../config.php';
 
-if(!isset($_SESSION['user_name'])) header('Location: index.php');
-if($_SESSION['user_type'] == 'user') header('Location: index.php');
+if(!isset($_SESSION['user_name'])) header('Location: ../index.php');
+if($_SESSION['user_type'] == 'user') header('Location: ../index.php');
 
 $utype= $_SESSION['user_type'];
 $name = "";
@@ -31,7 +31,7 @@ $result = $conn->query($sql);
 <html lang="en">
   <meta content="width=device-width">
 <head>
-  <link rel="stylesheet" href="CSS/admin-site.css">
+  <link rel="stylesheet" href="../CSS/admin-site.css">
   <link rel="icon" type="image/x-icon" href="../img/icon.ico">
   <title>GildeDEVops</title>
 </head>
@@ -39,7 +39,7 @@ $result = $conn->query($sql);
     <section>
       <!-- Main menu line on top of site -->
       <div class='nav'>
-                <?php include 'nav.php';?>
+                <?php include '../nav.php';?>
                 <div class="inputbox">
                   <input type="text" name="search" required>
                   <label for=""><?php echo $lang['search']?></label>
@@ -48,10 +48,10 @@ $result = $conn->query($sql);
               </form>
         </div>
         <div class="main-menu">
-          <img src="img/logo.jpg" alt="logo" class="logo">
+          <img src="../img/logo.jpg" alt="logo" class="logo">
           <!-- Lang Change -->
-          <a href="medewerkers.php?lang=en"><img src="img/eng.png" alt="Eng Lang Flag" class="flag-en"></a>
-          <a href="medewerkers.php?lang=nl"><img src="img/nl.png" alt="NL Lang Flag" class="flag-nl"></a>
+          <a href="medewerkers.php?lang=en"><img src="../img/eng.png" alt="Eng Lang Flag" class="flag-en"></a>
+          <a href="medewerkers.php?lang=nl"><img src="../img/nl.png" alt="NL Lang Flag" class="flag-nl"></a>
           <a href="register.php"><ion-icon name="person-add-outline" class="add"></ion-icon></a>
           <form method="post" class='formlout'>
             <button name='logout' class='logout'><ion-icon name="log-out-outline" class='logouticon'></ion-icon></button>

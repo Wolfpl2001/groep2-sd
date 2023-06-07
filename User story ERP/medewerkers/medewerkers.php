@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
   //Connect to Database
-  include "config.php";
+  include "../config.php";
   $sql = "SELECT * FROM werkzaamheden;";
   $result = mysqli_query($conn, $sql);
   $resultCheck = mysqli_num_rows($result);
