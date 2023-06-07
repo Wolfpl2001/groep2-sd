@@ -1,8 +1,8 @@
 <?php
 session_start();
 include '../config.php';
-if(!isset($_SESSION['user_name'])) header('Location: index.php');
-if($_SESSION['user_type'] == 'user') header('Location: index.php');
+if(!isset($_SESSION['user_name'])) header('Location: ../index.php');
+if($_SESSION['user_type'] == 'user') header('Location: ../index.php');
 $uname = $_SESSION['user_name'];
 $utype = $_SESSION['user_type'];
 $lname = $_SESSION['user_lname'];

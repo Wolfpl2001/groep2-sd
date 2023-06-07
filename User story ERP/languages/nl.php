@@ -11,6 +11,7 @@
         "Wemail" => "Werkmail",
         "Office" => "Kantoorruimte",
         "E-mail" => "E-mail",
+        "adres" => "Adres",
         "Confirm_Password" => "Bevestig Wachtwoord",
         "user" => "Gebruiker",
         "admin" => "Beheerder",
@@ -43,5 +44,6 @@
         "rknowledge"=> "Benodigde kennis",
         "contact"=> "Contact",
         "pnumber" => "Telefoonnummer",
+        "kname" => "Klant Naam",
     );
 ?>

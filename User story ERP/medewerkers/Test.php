@@ -40,6 +40,7 @@ $result = $conn->query($sql);
       <!-- Main menu line on top of site -->
       <div class='nav'>
                 <?php include '../nav.php';?>
+                <form>
                 <div class="inputbox">
                   <input type="text" name="search" required>
                   <label for=""><?php echo $lang['search']?></label>

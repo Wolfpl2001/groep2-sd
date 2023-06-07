@@ -11,6 +11,7 @@
         "Wemail" => "Work email",
         "Office" => "Office",
         "E-mail" => "E-mail",
+        "adres" => "Adres",
         "Confirm_Password" => "Confirm Password",
         "user" => "User",
         "admin" => "Admin",
@@ -43,5 +44,6 @@
         "rknowledge"=> "Required knowledge",
         "contact"=> "Contact",
         "pnumber" => "Phone number",
+        "kname" => "Customer Name",
     );
 ?>
