@@ -1,56 +1,97 @@
-<!DOCTYPE html>
 <?php
-  //Connect to Database
-  include "../config.php";
-  $sql = "SELECT * FROM werkzaamheden;";
-  $result = mysqli_query($conn, $sql);
-  $resultCheck = mysqli_num_rows($result);
+session_start();
+// Include things from config.php
+include '../config.php';
+
+if(!isset($_SESSION['user_name'])) header('Location: ../index.php');
+if($_SESSION['user_type'] == 'user') header('Location: ../index.php');
+
+$utype= $_SESSION['user_type'];
+$name = "";
+$tussenvoegsel = "";
+$achternaam = "";
+$gebortedatum = "";
+$functie = "";
+$werkemail = "";
+$rumte = "";
+$id = "";
+$uname= $_SESSION['user_name'];
+// searching information from data base
+if (empty($_GET['search'])) {
+  $sql = "SELECT * FROM `medewerkers`";
+} else {
+  $search_query = mysqli_real_escape_string($conn, $_GET['search']);
+  $sql = "SELECT * FROM `medewerkers` WHERE Voornaam LIKE '%$search_query%' OR Achternaam LIKE '%$search_query%' Or Tussenvoegsel LIKE '%$search_query%' OR Geboortedatum LIKE '%$search_query%' OR Functie LIKE '%$search_query%' OR id LIKE '%$search_query%' OR Werkmail LIKE '%$search_query%' OR Kantoorruimte LIKE '%$search_query%'";
+}
+
+$result = $conn->query($sql);
 ?>
-<html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="medewerkers.css">
-        <!--Connect to Bootstrap-->
-        <link href=https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-        <script src=https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-    </head>
-    <body>
 
-        <table class='table'> <!--Automatically generated table from mySQL Database-->
-            <thead>
-                <tr>
-                <th>ID</th>
-                <th>Voornaam</th>
-                <th>Tussenvoegsel</th>
-                <th>Achternaam</th>
-                <th>Geboortedatum</th>
-                <th>Functie</th>
-                <th>Werkmail</th>
-                <th>Kantoorruimte</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                <?php
-                if ($resultCheck > 0) {
-                    while ($row = mysqli_fetch_assoc($result)) {
-                    echo
-                        "<tr>" .
-                        "<th>" . $row['ID'] . "</th>" . 
-                        "<td>" . $row['Voornaam'] . "</td>" . 
-                        "<td>" . $row['Tussenvoegsel'] . "</td>" . 
-                        "<td>" . $row['Achternaam'] . "</td>" . 
-                        "<td>" . $row['Geboortedatum'] . "</td>" . 
-                        "<td>" . $row['Functie'] . "</td>" .
-                        "<td>" . $row['Werkmail'] . "</td>" .
-                        "<td>" . $row['Kantoorruimte'] . "</td>" .
-                        "</tr>";
-                    }
-                }
-                ?>
-            <tbody>
-        </table>
-        
+<!DOCTYPE html>
+<html lang="en">
+  <meta content="width=device-width">
+<head>
+  <link rel="stylesheet" href="../CSS/admin-site.css">
+  <link rel="icon" type="image/x-icon" href="../img/icon.ico">
+  <title>GildeDEVops</title>
+</head>
+<body>
+    <section>
+      <!-- Main menu line on top of site -->
+      <div class='nav'>
+                <?php include '../nav.php';?>
+                <form>
+                <div class="inputbox">
+                  <input type="text" name="search" required>
+                  <label for=""><?php echo $lang['search']?></label>
+                  <a href="medewerkers.php"><ion-icon name="close-outline"></ion-icon></a>
+                </div>
+              </form>
+        </div>
+        <div class="main-menu">
+          <img src="../img/logo.jpg" alt="logo" class="logo">
+          <!-- Lang Change -->
+          <a href="medewerkers.php?lang=en"><img src="../img/eng.png" alt="Eng Lang Flag" class="flag-en"></a>
+          <a href="medewerkers.php?lang=nl"><img src="../img/nl.png" alt="NL Lang Flag" class="flag-nl"></a>
+          <a href="register.php"><ion-icon name="person-add-outline" class="add"></ion-icon></a>
+          <form method="post" class='formlout'>
+            <button name='logout' class='logout'><ion-icon name="log-out-outline" class='logouticon'></ion-icon></button>
+          </form>
+        </div>
+        <!-- Database Informations -->
+        <div class="db">
+          <h1 class=h1><?php echo $lang['db_info']?>: <?php echo $lang['staff']?></h1>
+          <!-- searching site -->
+          
+          <!-- informations from datebase are seeing  on site -->
+          <?php
+          if ($result == true) {
+            if ($result->num_rows > 0) {
+              // output data of each row
+              echo "<table class='table-db'><tr class='stick'><th>" . $lang['ID'] . "</th><th>" . $lang['Name'] . "</th><th>" . $lang['insertion'] . "</th><th>" . $lang['Lname'] . "</th><th>" . $lang['Birth'] . "</th><th>" . $lang['Function'] . "</th><th>" . $lang['Wemail'] . "</th><th>" . $lang['Office'] . "</th></tr>";
+              while ($row = $result->fetch_assoc()) {
+                $id = $row['ID'];
+                $name = $row['Voornaam'];
+                $tussenvoegsel = $row['Tussenvoegsel'];
+                $achternaam = $row['Achternaam'];
+                $gebortedatum = $row['Geboortedatum'];
+                $functie = $row['Functie'];
+                $werkemail = $row['Werkmail'];
+                $rumte = $row['Kantoorruimte'];
+                echo "<tr><td><a href=bla.php?id=" . $id . ">" . $id . "</a></td><td><a href=bla.php?id=" . $id . ">" . $name . "</a></td><td><a href=bla.php?id=" . $id . ">" . $tussenvoegsel . "</a></td><td><a href=bla.php?id=" . $id . ">" . $achternaam . "</a></td><td><a href=bla.php?id=" . $id . ">" . $gebortedatum . "</a></td><td><a href=bla.php?id=" . $id . ">" . $functie . "</a></td><td><a href=bla.php?id=" . $id . ">" . $werkemail . "</a></td><td><a href=bla.php?id=" . $id . ">" . $rumte . "</a></td></tr>";
+              }
+              echo "</table>";
+            } else {
+              echo "0 results";
+            }
+          } else {
+            echo "Error";
+          }
+          ?>
+    </table>
+            </div>
+        </section>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     </body>
-</html>
-
+    </html>

@@ -73,7 +73,7 @@ if(isset($_POST['change'])){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="CSS/bla.css">
+  <link rel="stylesheet" href="../CSS/bla.css">
   <title>GildeDEVops Database</title>
 </head>
 <body>
