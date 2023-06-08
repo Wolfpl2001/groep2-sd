@@ -11,7 +11,13 @@ function time() {
     console.log(++timer)
     document.getElementById("demo").innerHTML = timer  ;
 };
-
+function check() {
+    if ( truefalse === 'true') {
+        myInterval = setInterval(time, 1000)
+    }
+    else {
+    clearInterval(myInterval)
+}};
 // start button
 // bug with timer cuz you can spam click the button
 const startBtn = document.querySelector ("#start");
