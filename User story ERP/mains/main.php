@@ -62,9 +62,9 @@ $result = $conn->query($sql);
                     $Titel = $row['Titel'];
                     $Omschrijving = $row['Omschrijving'];
                     $Aanvraagdatum = $row['Aanvraagdatum'];
-                    $Benodigde = $row['Benodigde kennis'];
+                    $Benodigde = $row['Benodigde_kennis'];
                     $Contact = $row['Contact'];
-                    $tel = $row['Telefoon Nummer'];
+                    $tel = $row['Telefoon_Nummer'];
                     echo "<tr class='table-db'><td>". $id."</td><td>" .$kid. "</td><td>" . $Titel ."</td><td>" . $Omschrijving. "</td><td>" . $Aanvraagdatum."</td><td>" . $Benodigde."</td><td>" . $Contact. "</td><td>". $tel."</td></tr>";
                 }
                 echo "</table>";
