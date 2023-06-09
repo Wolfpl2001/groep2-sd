@@ -1,26 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
-*{
+
+* {
     margin: 0;
     padding: 0;
-    font-family: 'poppins',sans-serif;
+    font-family: 'poppins', sans-serif;
 }
-body{
+
+body {
     background-color: #350194;
 }
-section{
+
+section {
     display: flex;
     min-height: 100vh;
     width: 100%;
-    
+
     background-position: center;
     background-size: cover;
 }
-h2{
+
+h2 {
     font-size: 3em;
     color: #fff;
     text-align: center;
 }
-.login{
+
+.login {
     position: absolute;
     width: 7%;
     height: 40px;
@@ -35,6 +40,7 @@ h2{
     background: transparent;
     backdrop-filter: blur(50px);
 }
+
 .contact {
     position: absolute;
     width: 7%;
@@ -50,6 +56,7 @@ h2{
     background: transparent;
     backdrop-filter: blur(50px);
 }
+
 .home {
     position: absolute;
     width: 7%;
@@ -65,19 +72,21 @@ h2{
     background: transparent;
     backdrop-filter: blur(50px);
 }
+
 .logo {
     width: 18%;
     height: 85%;
-    top:5%;
+    top: 5%;
     left: 0px;
     position: absolute;
-    size-adjust: 20%; 
+    size-adjust: 20%;
     display: flex;
-    background-color:white;
+    background-color: white;
     border: 1px solid orange;
     backdrop-filter: blur(70px);
     border-radius: 40px;
 }
+
 .main-menu {
     background-position: center;
     background-size: cover;
@@ -86,13 +95,16 @@ h2{
     position: absolute;
     background-color: white;
 }
+
 button {
     color: #fff;
 }
+
 .used {
     color: black;
 }
-.nav{
+
+.nav {
     position: relative;
     width: 100%;
     align-self: center;
@@ -105,14 +117,17 @@ button {
     font-size: 20px;
     background-color: #dd006a;
 }
+
 .nav a:hover {
-  color: black;
+    color: black;
 }
+
 .nav a.active {
-  background-color: #04AA6D;
-  color: white;
+    background-color: #04AA6D;
+    color: white;
 }
-.table1{
+
+.table1 {
     position: absolute;
     background-color: #350194;
     height: 30%;
@@ -122,7 +137,8 @@ button {
     border-radius: 20px;
     text-decoration: none;
 }
-.text{
+
+.text {
     height: 100%;
     width: 100%;
     align-items: center;
@@ -132,7 +148,8 @@ button {
     text-decoration: none;
 
 }
-.table-db{
+
+.table-db {
     position: relative;
     text-align: center;
     height: fit-content;
@@ -140,10 +157,11 @@ button {
     width: 100%;
     background-color: transparent;
     backdrop-filter: blur(50px);
-    color:#fff;
+    color: #fff;
     align-self: center;
 }
-.db{
+
+.db {
     width: 100%;
     height: 100%;
     margin-top: 5%;
@@ -155,19 +173,23 @@ button {
     text-align: center;
     font-size: large;
 }
-h1{
+
+h1 {
     color: white;
     text-decoration: none;
 }
-h3{
-color: #fff;
-float: left;
+
+h3 {
+    color: #fff;
+    float: left;
 }
-a{
+
+a {
     text-decoration: none;
-    color:#fff;
+    color: #fff;
 }
-.flag-nl{
+
+.flag-nl {
     position: absolute;
     top: 20%;
     right: 120px;
@@ -176,6 +198,7 @@ a{
     border-radius: 20px;
     right: 5%;
 }
+
 .flag-en {
     position: absolute;
     top: 20%;
@@ -184,6 +207,7 @@ a{
     height: 40px;
     border-radius: 20px
 }
+
 .inputbox input {
     width: 100%;
     height: 50px;
@@ -191,10 +215,11 @@ a{
     border: none;
     outline: none;
     font-size: 1em;
-    padding:0 35px 0 5px;
+    padding: 0 35px 0 5px;
     color: #fff;
 }
-.inputbox{
+
+.inputbox {
     position: absolute;
     right: 4%;
     top: 0.5%;
@@ -202,7 +227,8 @@ a{
     border-bottom: 2px solid #fff;
     background-color: transparent;
 }
-.inputbox label{
+
+.inputbox label {
     position: absolute;
     top: 50%;
     left: 5px;
@@ -212,23 +238,27 @@ a{
     pointer-events: none;
     transition: .5s;
 }
-input:focus ~ label,
-input:valid ~ label{
-top: -5px;
+
+input:focus~label,
+input:valid~label {
+    top: -5px;
 }
-.inputbox ion-icon{
+
+.inputbox ion-icon {
     position: absolute;
     right: 8px;
     color: #fff;
     font-size: 1.2em;
     top: 20px;
 }
-.center{
+
+.center {
     position: relative;
     padding: center;
     margin-left: 50%;
 }
-.logout{
+
+.logout {
     position: absolute;
     right: 20px;
     height: 40px;
@@ -241,18 +271,22 @@ top: -5px;
     color: white;
     background-color: orange;
 }
-.logout a:hover{
+
+.logout a:hover {
     color: black;
 }
-.formlout a.hover{
+
+.formlout a.hover {
     color: black;
 }
-.logouticon{
+
+.logouticon {
     height: 20px;
     width: 20px;
     top: 3%;
 }
-.hreg{
+
+.hreg {
     height: 40px;
     width: 40px;
     top: 3%;
@@ -262,12 +296,14 @@ top: -5px;
     top: 20%;
     right: 180px;
 }
+
 tbody {
     width: 100%;
     margin-top: 0px;
 }
+
 @media only screen and (max-width: 768px) {
-    .db{
+    .db {
         width: 100%;
         height: 100%;
         margin-top: 10%;
@@ -278,22 +314,24 @@ tbody {
         backdrop-filter: blur(50px);
         text-align: center;
         font-size: x-small;
-        
-    }  
+
+    }
+
     .logo {
         width: 18%;
         height: 60%;
-        top:20%;
+        top: 20%;
         left: 0px;
         position: absolute;
-        size-adjust: 20%; 
+        size-adjust: 20%;
         display: flex;
         background: transparent;
         border: 1px solid orange;
         backdrop-filter: blur(70px);
         border-radius: 40px;
     }
-    .flag-nl{
+
+    .flag-nl {
         position: absolute;
         top: 20%;
         width: 20px;
@@ -301,6 +339,7 @@ tbody {
         border-radius: 20px;
         right: 5%;
     }
+
     .flag-en {
         position: absolute;
         top: 20%;

@@ -9,17 +9,23 @@ if ($_SESSION['user_type'] == 'user')
   header('Location: index.php');
 
 $utype = $_SESSION['user_type'];
+$id = "";
 $name = "";
+$insert = "";
 $lname = "";
-$adres = "";
-$tel = "";
+$date = "";
+$stime = "";
+$br = "";
+$etime = "";
+$work = "";
+$thours = "";
 $uname = $_SESSION['user_name'];
 // searching information from data base
 if (empty($_GET['search'])) {
-  $sql = "SELECT * FROM `klanten`";
+  $sql = "SELECT * FROM `werkzaamheden`";
 } else {
   $search_query = mysqli_real_escape_string($conn, $_GET['search']);
-  $sql = "SELECT * FROM `klanten` WHERE ID LIKE '%$search_query%' OR Achternaam LIKE '%$search_query%' Or  Adres LIKE '%$search_query%' OR  Voornaam LIKE '%$search_query%' OR Tel LIKE '%$search_query%'";
+  $sql = "SELECT * FROM `werkzaamheden` WHERE ID LIKE '%$search_query%' OR Achternaam LIKE '%$search_query%' Or  Voornaam LIKE '%$search_query%' OR  Tussenvoegsel LIKE '%$search_query%' OR Datum LIKE '%$search_query%'OR Starttijd LIKE '%$search_query%' OR Pauze LIKE '%$search_query%' OR Eindtijd LIKE '%$search_query%'OR Werkzaamheden LIKE '%$search_query%'OR Total Uren LIKE '%$search_query%'";
 }
 
 $result = $conn->query($sql);
@@ -46,15 +52,15 @@ $result = $conn->query($sql);
           <label for="">
             <?php echo $lang['search'] ?>
           </label>
-          <a href="customers.php"><ion-icon name="close-outline"></ion-icon></a>
+          <a href="activities.php"><ion-icon name="close-outline"></ion-icon></a>
         </div>
       </form>
     </div>
     <div class="main-menu">
       <img src="../img/logo.jpg" alt="logo" class="logo">
       <!-- Lang Change -->
-      <a href="customers.php?lang=en"><img src="../img/eng.png" alt="Eng Lang Flag" class="flag-en"></a>
-      <a href="customers.php?lang=nl"><img src="../img/nl.png" alt="NL Lang Flag" class="flag-nl"></a>
+      <a href="activities.php?lang=en"><img src="../img/eng.png" alt="Eng Lang Flag" class="flag-en"></a>
+      <a href="activities.php?lang=nl"><img src="../img/nl.png" alt="NL Lang Flag" class="flag-nl"></a>
       <a href="register.php"><ion-icon name="person-add-outline" class="add"></ion-icon></a>
       <form method="post" class='formlout'>
         <button name='logout' class='logout'><ion-icon name="log-out-outline" class='logouticon'></ion-icon></button>
@@ -62,7 +68,7 @@ $result = $conn->query($sql);
     </div>
     <!-- Database Informations -->
     <div class="db">
-      <h1 class=h1><?php echo $lang['db_info'] ?>: <?php echo $lang['Customers'] ?></h1>
+      <h1 class=h1><?php echo $lang['db_info'] ?>: <?php echo $lang['Activities'] ?></h1>
       <!-- searching site -->
 
       <!-- informations from datebase are seeing  on site -->
@@ -70,14 +76,19 @@ $result = $conn->query($sql);
       if ($result == true) {
         if ($result->num_rows > 0) {
           // output data of each row
-          echo "<table class='table-db'><tr class='stick'><th>" . $lang['ID'] . "</th><th>" . $lang['Name'] . "</th><th>" . $lang['Lname'] . "</th><th>" . $lang['adres'] . "</th><th>" . $lang['pnumber'] . "</th></tr>";
+          echo "<table class='table-db'><tr class='stick'><th>" . $lang['ID'] . "</th><th>" . $lang['Name'] . "</th><th>" . $lang['insertion'] . "</th><th>" . $lang['Lname'] . "</th><th>" . $lang['date'] . "</th><th>" . $lang['stime'] . "</th><th>" . $lang['br'] . "</th><th>" . $lang['etime'] . "</th><th>" . $lang['Activities'] . "</th><th>" . $lang['thours'] . "</th></tr>";
           while ($row = $result->fetch_assoc()) {
             $id = $row['ID'];
             $name = $row['Voornaam'];
+            $insert = $row['Tussenvoegsel'];
             $lname = $row['Achternaam'];
-            $adres = $row['Adres'];
-            $tel = $row['Tel'];
-            echo "<tr><td><a href=bla.php?id=" . $id . ">" . $id . "</a></td><td><a href=bla.php?id=" . $id . ">" . $name . "</a></td><td><a href=bla.php?id=" . $id . ">" . $lname . "</a></td><td><a href=bla.php?id=" . $id . ">" . $adres . "</a></td><td><a href=bla.php?id=" . $id . ">" . $tel . "</a></td></tr>";
+            $date = $row['Datum'];
+            $stime = $row['Starttijd'];
+            $br = $row['Pauze'];
+            $etime = $row['Eindtijd'];
+            $work = $row['Werkzaamheden'];
+            $thours = $row['Totaal Uren'];
+            echo "<tr><td><a href=bla.php?id=" . $id . ">" . $id . "</a></td><td><a href=bla.php?id=" . $id . ">" . $name . "</a></td><td><a href=bla.php?id=" . $id . ">" . $insert . "</a></td><td><a href=bla.php?id=" . $id . ">" . $lname . "</a></td><td><a href=bla.php?id=" . $id . ">" . $date . "</a></td><td><a href=bla.php?id=" . $id . ">" . $stime . "</a></td><td><a href=bla.php?id=" . $id . ">" . $br . "</a></td><td><a href=bla.php?id=" . $id . ">" . $etime . "</a></td><td><a href=bla.php?id=" . $id . ">" . $work . "</a></td><td><a href=bla.php?id=" . $id . ">" . $thours . "</a></td></tr>";
           }
           echo "</table>";
         } else {
