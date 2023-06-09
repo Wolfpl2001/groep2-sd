@@ -22,7 +22,7 @@ if (empty($_GET['search'])) {
   $sql = "SELECT opdrachten.ID, klanten.Voornaam,opdrachten.Titel, opdrachten.Omschrijving, opdrachten.Aanvraagdatum, opdrachten.Benodigde_kennis, opdrachten.Contact, opdrachten.Telefoon_Nummer  FROM klanten INNER JOIN opdrachten ON klanten.ID = opdrachten.KlantID";
 } else {
   $search_query = mysqli_real_escape_string($conn, $_GET['search']);
-  $sql = "SELECT opdrachten.ID, klanten.Voornaam,opdrachten.Titel, opdrachten.Omschrijving, opdrachten.Aanvraagdatum, opdrachten.Benodigde_kennis, opdrachten.Contact, opdrachten.Telefoon_Nummer  FROM klanten INNER JOIN opdrachten ON klanten.ID = opdrachten.KlantID WHERE opdrachten.ID LIKE '%$search_query%'OR klanten.Voornaam LIKE '%$search_query%'OR opdrachten.Titel LIKE '%$search_query%' OR opdrachten.Omchrijving LIKE '%$search_query%' OR opdrachten.Aanvraagdatum LIKE '%$search_query%' OR opdrachten.Benodigde_kennis LIKE '%$search_query%' OR opdrachten.Contact LIKE '%$search_query%' OR opdrachten.Telefoon_Nummer LIKE '%$search_query%'";
+  $sql = "SELECT opdrachten.ID, klanten.Voornaam,opdrachten.Titel, opdrachten.Omschrijving, opdrachten.Aanvraagdatum, opdrachten.Benodigde_kennis, opdrachten.Contact, opdrachten.Telefoon_Nummer  FROM klanten INNER JOIN opdrachten ON klanten.ID = opdrachten.KlantID WHERE `opdrachten`.`ID` LIKE '%$search_query%'OR `klanten`.`Voornaam` LIKE '%$search_query%'OR `opdrachten`.`Titel` LIKE '%$search_query%' OR `opdrachten`.`Omchrijving` LIKE '%$search_query%' OR `opdrachten`.`Aanvraagdatum` LIKE '%$search_query%' OR `opdrachten`.`Benodigde_kennis` LIKE '%$search_query%' OR `opdrachten`.`Contact` LIKE '%$search_query%' OR `opdrachten`.`Telefoon_Nummer` LIKE '%$search_query%'";
 }
 
 $result = $conn->query($sql);
