@@ -11,11 +11,11 @@ $ids = $_GET['id'];
 
 //$search = $_GET['search'];
 // Retrieve data for the specified ID
-$sql = "SELECT * FROM `opdrachten` WHERE id = $ids";
+$sql = "SELECT opdrachten.ID, opdrachten.KlantID,opdrachten.Titel, opdrachten.Omschrijving, opdrachten.Aanvraagdatum, opdrachten.Benodigde_kennis, opdrachten.Contact, opdrachten.Telefoon_Nummer, opdrachten.KlantID  FROM klanten INNER JOIN opdrachten ON klanten.ID = opdrachten.KlantID";
 
 $utype = $_SESSION['user_type'];
-$id = "";
-$klantid = "";
+$ids = "";
+$klant = "";
 $title = "";
 $om = "";
 $bk = "";
@@ -30,7 +30,7 @@ if ($result == true) {
         // output data of each row
         while ($row = $result->fetch_assoc()) {
             $ids = $row['ID'];
-            $klant = $row['medewerkers.ID'];
+            $klant = $row['KlantID'];
             $title = $row['Titel'];
             $om = $row['Omschrijving'];
             $date = $row['Aanvraagdatum'];
@@ -48,7 +48,7 @@ if ($result == true) {
 if (isset($_POST['change'])) {
 
     $ids = $row['ID'];
-    $klant = $_GET['medewerkers.ID'];
+    $klant = $_GET['klantID'];
     $title = $_GET['Titel'];
     $om = $_GET['Omschrijving'];
     $date = $_GET['Aanvraagdatum'];
@@ -59,11 +59,11 @@ if (isset($_POST['change'])) {
 
 
 
-    $select = "SELECT * FROM opdrachten WHERE ID = '$ids'";
+    $select = "SELECT opdrachten.ID, klanten.Voornaam,opdrachten.Titel, opdrachten.Omschrijving, opdrachten.Aanvraagdatum, opdrachten.Benodigde_kennis, opdrachten.Contact, opdrachten.Telefoon_Nummer  FROM klanten INNER JOIN opdrachten ON klanten.ID = opdrachten.KlantID";
 
     $result = mysqli_query($conn, $select);
     if ($npass == $npassc && $pass != $npass) {
-        $update = "UPDATE `medewerkers` SET `Voornaam`='$name',`Tussenvoegsel`='$ins',`Achternaam`='$lname',`Geboortedatum`='$birth',`Functie`='$function',`Werkmail`='$wemail',`Kantoorruimte`='$office',`password`='$password',`user_type`='$utype' WHERE ID='$ids'";
+        $update = "UPDATE `medewerkers` SET `Voornaam`='$klant',`Tussenvoegsel`='$title',`Achternaam`='$om',`Geboortedatum`='$date',`Functie`='$bk',`Werkmail`='$contact',`Kantoorruimte`='$tel'WHERE ID='$ids'";
         mysqli_query($conn, $update);
         header('location:medewerkers.php');
 
@@ -103,57 +103,70 @@ if (isset($_POST['delete'])) {
 
                     <div class='secondtable'>
                         <div class="inputbox">
-                            <ion-icon name="person-outline"></ion-icon>
-                            <input type="text" name="name" value="<?= $klant ?>" required>
-                            <label for="">
-                                <?php echo $lang['Name'] ?>
-                            </label>
+                            <?php
+                            $info = "SELECT `ID`, `Achternaam`, `Voornaam` FROM `klanten`";
+                            $result1 = mysqli_query($conn, $info);
+                            if ($result1 == true) {
+                                if ($result1->num_rows > 0) {
+                                    // output data of each row
+                                    echo "<select>";
+                                    while ($row = $result1->fetch_assoc()) { // Corrected variable name to $result1
+                                        $id = $row['ID'];
+                                        $fname = $row['Voornaam'];
+                                        $lastn = $row['Achternaam'];
+                                        echo "<option value=" . $id . ($id == $klant ? " selected" : "") . ">" . $id."&nbsp". $fname."&nbsp". $lastn . "</option>";
+                                    }
+                                    echo "</select>";
+                                } else {
+                                    echo "0";
+                                }
+                            }
+                            ?>
                         </div>
                         <div class="inputbox">
                             <ion-icon name="person-outline"></ion-icon>
-                            <input type="text" name="ins" value="<?php echo $title; ?>">
+                            <input type="text" name="Titel" value="<?php echo $title; ?>">
                             <label for="">
-                                <?php echo $lang['insertion'] ?>
+                                <?php echo $lang['title'] ?>
                             </label>
                         </div>
                     </div>
                     <div class='secondtable'>
                         <div class="inputbox">
                             <ion-icon name="person-outline"></ion-icon>
-                            <input type="text" name="Lname" value="<?php echo $om; ?>" required>
+                            <input type="text" name="description" value="<?php echo $om; ?>" required>
                             <label for="">
-                                <?php echo $lang['Lname'] ?>
+                                <?php echo $lang['description'] ?>
                             </label>
                         </div>
                         <div class="inputbox">
-                            <input type="date" name="birth" value="<?php echo $date; ?>">
+                            <input type="date" name="Aanvraagdatum" value="<?php echo $date; ?>">
                             <label for="">
-                                <?php echo $lang['Birth'] ?>
+                                <?php echo $lang['adate'] ?>
                             </label>
                         </div>
                     </div>
                     <div class='secondtable'>
                         <div class="inputbox">
                             <ion-icon name="build-outline"></ion-icon>
-                            <input type="Text" name="Function" value="<?php echo $contact; ?>" required>
+                            <input type="Text" name="Contact" value="<?php echo $contact; ?>" required>
                             <label for="">
-                                <?php echo $lang['Function'] ?>
+                                <?php echo $lang['contact'] ?>
                             </label>
                         </div>
                         <div class="inputbox">
                             <ion-icon name="mail-outline"></ion-icon>
-                            <input type="number" name="Wemail" value="<?php echo $tel; ?>" required>
+                            <input type="number" name="Telefoon_Nummer" value="<?php echo $tel; ?>" required>
                             <label for="">
-                                <?php echo $lang['Wemail'] ?>
+                                <?php echo $lang['pnumber'] ?>
                             </label>
                         </div>
                     </div>
                     <div class='secondtable'>
                         <div class="inputbox1">
-                            <textarea type="Text" name="Function" rows="0" cols="90"required><?php echo $bk; ?></textarea>
-                            <label for="">
-                                <?php echo $lang['Function'] ?>
-                            </label>
+                            <label for=""><?php echo $lang['rknowledge'] ?></label>
+                            <textarea type="Text" name="Function" rows="0" cols="90"
+                                required><?php echo $bk; ?></textarea>
                         </div>
                     </div>
                     <p></p>

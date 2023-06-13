@@ -33,6 +33,9 @@ section {
     LEFT: 15%;
 
 }
+.form-value{
+    margin-left: 10%;
+}
 
 h2 {
     font-size: 2em;
@@ -59,7 +62,13 @@ h2 {
     color: #fff;
     background-color: transparent;
 }
-
+textarea{
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 10px;
+    border-radius: 20px;
+}
 .imputbox:after {
     content: "";
     display: table;
@@ -124,6 +133,7 @@ input:valid~label {
 }
 
 .button {
+    margin-top: 5%;
     position: relative;
     width: 100%;
     height: 40px;
@@ -140,6 +150,7 @@ input:valid~label {
 
 .delete {
     position: relative;
+    margin-right: 10%;
     width: 40px;
     height: 40px;
     border-radius: 40px;
