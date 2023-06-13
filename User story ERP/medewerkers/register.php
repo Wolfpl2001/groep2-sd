@@ -37,7 +37,7 @@ if (isset($_POST['submit'])) {
         } else {
             $insert = "INSERT INTO medewerkers(Achternaam, Tussenvoegsel, Voornaam, password, user_type, Werkmail, Geboortedatum, Kantoorruimte, Functie) VALUES ('$lname','$infix','$name','$pass','$user_type','$email','$bday','$workplace','$function')";
             mysqli_query($conn, $insert);
-            header('location:main.php');
+            header('location:medewerkers.php');
         }
 
     }
@@ -48,7 +48,7 @@ if (isset($_POST['submit'])) {
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="CSS/register.css">
+    <link rel="stylesheet" href="../CSS/register.css">
     <title>GildeDEVops Database</title>
 </head>
 

@@ -1,4 +1,3 @@
-th
 <?php
 $lang = array(
     "loggi" => "Login",

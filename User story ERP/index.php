@@ -20,6 +20,7 @@ if (isset($_POST['Login'])) {
             $_SESSION['user_name'] = $row['Voornaam'];
             $_SESSION['user_type'] = $row['user_type'];
             $_SESSION['user_lname'] = $row['Achternaam'];
+            $_SESSION['ID'] = $row['ID'];
             header('Location: ../User story ERP/mains/main.php');
 
 
@@ -28,6 +29,7 @@ if (isset($_POST['Login'])) {
             $_SESSION['user_name'] = $row['Voornaam'];
             $_SESSION['user_type'] = $row['user_type'];
             $_SESSION['user_lname'] = $row['Achternaam'];
+            $_SESSION['ID'] = $row['ID'];
             header('location:../User story ERP/mains/user_main.php');
         }
     } elseif (

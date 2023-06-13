@@ -48,6 +48,17 @@ h2 {
     align-items: center;
     border-bottom: 2px solid #fff;
 }
+.inputbox1{
+    width: 150%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    padding: 0 35px 0 5px;
+    color: #fff;
+    background-color: transparent;
+}
 
 .imputbox:after {
     content: "";
