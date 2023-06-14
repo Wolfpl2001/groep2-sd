@@ -86,6 +86,7 @@ if (isset($_POST['delete'])) {
 
 <head>
     <link rel="stylesheet" href="../CSS/bla.css">
+    <link rel="icon" type="image/x-icon" href="../img/icon.ico">
     <title>GildeDEVops Database</title>
 </head>
 
