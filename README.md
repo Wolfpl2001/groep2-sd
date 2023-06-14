@@ -1,9 +1,8 @@
 # groep2-sd
 
 - added nothing
-- added gay
+- added gay 
 - the ocean is now made out of 100% water
 
 
-- removed sten from living
-- 
+- removed sten 
