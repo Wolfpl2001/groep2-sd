@@ -11,17 +11,11 @@ function time() {
     console.log(++timer)
     document.getElementById("demo").innerHTML = timer;
 };
-function check() {
-    if ( truefalse === 'true') {
-        myInterval = setInterval(time, 1000)
-    }
-    else {
-    clearInterval(myInterval)
-}};
+
 
 function stopfunction() {
     clearInterval(myInterval)
-    console.log("test 2")
+    console.log("stopfucntion")
     document.getElementById("start").style.display = "unset";
     document.getElementById("stopbtn").style.display = "none";
 };
@@ -42,8 +36,8 @@ stopBtn.addEventListener("click", function (event) {
 });
 const resetBtn = document.querySelector("#reset")
 resetBtn.addEventListener("click", function (event) {
-    timer = 0
     console.log(timer)
+    timer = 0
     document.getElementById("demo").innerHTML = timer;
     stopfunction()
 });

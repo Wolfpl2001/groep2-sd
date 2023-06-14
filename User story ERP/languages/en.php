@@ -50,5 +50,8 @@ $lang = array(
     "br" => "Break",
     "etime" => "End Time",
     "thours" => "Total Hours",
+    "start_werk" => "Start/continue working",
+    "pauze" => "Break",
+    "eind_werk" => "End workday",
 );
 ?>

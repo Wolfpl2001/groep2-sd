@@ -50,5 +50,8 @@ $lang = array(
     "br" => "Pauze",
     "etime" => "Eind tijd",
     "thours" => "Totaal Uren",
+    "start_werk" => "Starten/doorgaan met werken",
+    "pauze" => "Pauze",
+    "eind_werk" => "Einde Werkdag",
 );
 ?>

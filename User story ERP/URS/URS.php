@@ -65,13 +65,15 @@ if (isset($_POST['Login'])) {
                     ;
                     ?>
                 </form>
-                <p id=demo></p>
+                <form>
+                <imput type=number id=demo></imput>
+                </form>
                 <br>
-                <button id="start"> start timer </button>
+                <button id="start"><?php echo $lang['start_werk']?></button>
                 <br>
                 <br>
-                <button id="stopbtn"> stop timer </button> <br> <br>
-                <button id="reset">reset timer </button>
+                <button id="stopbtn"><?php echo $lang['pauze']?> </button> <br> <br>
+                <button id="reset"><?php echo $lang['eind_werk']?></button>
 
             </div>
         </div>
