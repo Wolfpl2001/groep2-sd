@@ -159,3 +159,10 @@ p {
     text-align: center;
     font-size: 25px;
 }
+#start {
+    display: unset;
+}
+
+#stopbtn {
+    display: none;
+}

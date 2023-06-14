@@ -51,9 +51,9 @@ if (isset($_POST['Login'])) {
         <div class="form-box">
             <div class="form-value">
                 <form action="index.php" method="post">
-                    <a href= "main.php"><ion-icon name="arrow-back-outline" class="arrow"></ion-icon></a>
-                    <a href= "URS.php?lang=nl"><img src="img/NL.png" alt="NL Flag" class="flag-nl" href="nl-index.html"></a>
-                    <a href= "URS.php?lang=en"> <img src="img/eng.png" alt="ENG Flag" class="flag-en used"></a>
+                    <a href= "../mains/main.php"><ion-icon name="arrow-back-outline" class="arrow"></ion-icon></a>
+                    <a href= "URS.php?lang=nl"><img src="../img/NL.png" alt="NL Flag" class="flag-nl" href="nl-index.html"></a>
+                    <a href= "URS.php?lang=en"> <img src="../img/eng.png" alt="ENG Flag" class="flag-en used"></a>
                     <h2><?php echo $lang['reg_hours']?></h2>
                     <?php
                     if (isset($error)) {
@@ -70,7 +70,7 @@ if (isset($_POST['Login'])) {
                 <button id="start"> start timer </button>
                 <br>
                 <br>
-                <button id="stop"> stop timer </button> <br> <br>
+                <button id="stopbtn"> stop timer </button> <br> <br>
                 <button id="reset">reset timer </button>
 
             </div>
