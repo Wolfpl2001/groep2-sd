@@ -2,39 +2,20 @@
 session_start();
 
 include '../config.php';
-if (isset($_POST['Login'])) {
 
-    $Personid = mysqli_real_escape_string($conn, $_POST['Personid']);
-    $pass = md5($_POST['password']);
+$workhours = 
+print_r($workhours);
 
-    $select = "SELECT * FROM user_form WHERE Personid = '$Personid' && password = '$pass' ";
+$sql = "INSERT INTO werkzaamheden(Werknemer_ID, Aantal_Uren, Projectnaam, Omschrijving_Werkzaamheden) 
+    VALUES ('$Werknemer_ID', '$Aantal_Uren','$Projectnaam','$Omschrijving_Werkzaamheden')";
 
-    $result = mysqli_query($conn, $select);
+    $result = mysqli_query($conn, $sql);
 
-    if (mysqli_num_rows($result) > 0) {
-
-        $row = mysqli_fetch_array($result);
-
-        if ($row['user_type'] == 'admin') {
-
-            $_SESSION['user_name'] = $row['FirstName'];
-            $_SESSION['user_type'] = $row['user_type'];
-            $_SESSION['user_lname'] = $row['LastName'];
-            header('Location: main.php');
-
-
-        } elseif ($row['user_type'] == 'user') {
-
-            $_SESSION['user_name'] = $row['FirstName'];
-            $_SESSION['user_type'] = $row['user_type'];
-            $_SESSION['user_lname'] = $row['LastName'];
-            header('location:user_main.php');
-        }
-    } elseif (
-        $error[] = $lang['error_loggin']
-    )
-        ;
-}
+    if ($result) {
+        header("Location: werkzaamheden.php?msg=New record created succesfully");
+    } else {
+        echo "Failed: " . mysqli_error($conn);
+    }   
 ?>
 
 
@@ -66,14 +47,18 @@ if (isset($_POST['Login'])) {
                     ?>
                 </form>
                 <form>
-                <imput type=number id=demo></imput>
+                <imput type=number id=demo name=output value="<?php echo '<p id=demo></>' ?>"> </imput>
+                
                 </form>
                 <br>
                 <button id="start"><?php echo $lang['start_werk']?></button>
                 <br>
                 <br>
                 <button id="stopbtn"><?php echo $lang['pauze']?> </button> <br> <br>
+                <form>
                 <button id="reset"><?php echo $lang['eind_werk']?></button>
+                </form>
+                
 
             </div>
         </div>
