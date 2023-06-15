@@ -61,7 +61,7 @@ if (isset($_POST['change'])) {
     if ($id==$ids) {
         $update = "INSERT INTO `opdrachten`( `KlantID`, `Titel`, `Omschrijving`, `Aanvraagdatum`, `Benodigde_kennis`, `Contact`, `Telefoon_Nummer`) VALUES ('$klant','$title','$om','$date','$bk','$contact','$tel')";
         mysqli_query($conn, $update);
-        header('location:assignmensts.php');
+        header('location:assignmensts_user.php');
 
     }
 }
