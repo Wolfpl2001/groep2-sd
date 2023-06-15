@@ -1,21 +1,23 @@
 <?php
 session_start();
 
-include '../config.php';
+include '../config.php'; 
+    if(isset($_POST['reset'])) {
+        $workhours = $_POST["demo"];
+        $sql = "INSERT INTO werkzaamheden(`Totaal Uren`) 
+        VALUES ('$workhours')";
+    
+    
+        $result = mysqli_query($conn, $sql);
+    
+    
+        if ($result) {
+            header("");
+        } else {
+            echo "Failed: " . mysqli_error($conn);
+        }
+    }
 
-$workhours = 
-print_r($workhours);
-
-$sql = "INSERT INTO werkzaamheden(Werknemer_ID, Aantal_Uren, Projectnaam, Omschrijving_Werkzaamheden) 
-    VALUES ('$Werknemer_ID', '$Aantal_Uren','$Projectnaam','$Omschrijving_Werkzaamheden')";
-
-    $result = mysqli_query($conn, $sql);
-
-    if ($result) {
-        header("Location: werkzaamheden.php?msg=New record created succesfully");
-    } else {
-        echo "Failed: " . mysqli_error($conn);
-    }   
 ?>
 
 
@@ -46,17 +48,23 @@ $sql = "INSERT INTO werkzaamheden(Werknemer_ID, Aantal_Uren, Projectnaam, Omschr
                     ;
                     ?>
                 </form>
-                <form>
-                <imput type=number id=demo name=output value="<?php echo '<p id=demo></>' ?>"> </imput>
                 
-                </form>
+                
+                
+                
                 <br>
                 <button id="start"><?php echo $lang['start_werk']?></button>
                 <br>
                 <br>
                 <button id="stopbtn"><?php echo $lang['pauze']?> </button> <br> <br>
                 <form>
-                <button id="reset"><?php echo $lang['eind_werk']?></button>
+                <imput type=number id=demo name=output value="<?php echo '<p id=demo></>' ?>"> </imput> 
+                <button imput= "submit" id="reset"><?php echo $lang['eind_werk']?></button>
+                 <br>
+                </form>
+                <form>
+                <label for="whour">gewerkte uren:</label>
+                <input type="text" id="whour" name="whour"><br><br>
                 </form>
                 
 
