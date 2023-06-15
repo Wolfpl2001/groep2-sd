@@ -4,8 +4,9 @@ session_start();
 include '../config.php'; 
     if(isset($_POST['reset'])) {
         $workhours = $_POST["demo"];
-        $sql = "INSERT INTO werkzaamheden(`Totaal Uren`) 
-        VALUES ('$workhours')";
+        
+        $sql = "INSERT INTO werkzaamheden(`Totaal Uren`,`Voornaam`,`Tussenvoegsel`,`Achternaam`,`Datum`,`Werkzaamheden`,) 
+        VALUES ('$workhours','$')";
     
     
         $result = mysqli_query($conn, $sql);
