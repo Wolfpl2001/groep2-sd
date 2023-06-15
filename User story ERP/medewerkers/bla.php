@@ -151,14 +151,14 @@ if (isset($_POST['delete'])) {
                     <div class='secondtable'>
                         <div class="inputbox">
                             <ion-icon name="business-outline"></ion-icon>
-                            <input type="test" name="Office" value="<?php echo $rumte; ?>" required>
+                            <input type="text" name="Office" value="<?php echo $rumte; ?>" required>
                             <label for="">
                                 <?php echo $lang['Office'] ?>
                             </label>
                         </div>
                         <div class="inputbox">
                             <ion-icon name="lock-closed-outline"></ion-icon>
-                            <input type="test" name="password" required>
+                            <input type="password" name="password" required>
                             <label for="">
                                 <?php echo $lang['passwor'] ?>
                             </label>
