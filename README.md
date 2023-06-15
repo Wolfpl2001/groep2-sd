@@ -6,3 +6,4 @@
 
 
 - removed sten 
+- added helpful dwarf
