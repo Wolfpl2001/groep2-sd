@@ -27,6 +27,8 @@ if (empty($_GET['search'])) {
 }
 
 $result = $conn->query($sql);
+if (isset($_POST['logout']))
+  session_destroy() . header('Location: ../index.php');
 ?>
 
 <!DOCTYPE html>
