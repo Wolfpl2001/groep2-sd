@@ -7,14 +7,13 @@ if ($_SESSION['user_type'] == 'user')
 
 include '../config.php';
 
-$ids = $_GET['id'];
 $name = "";
 $lname = "";
 $tel = "";
 $adres = "";
 //$search = $_GET['search'];
 // Retrieve data for the specified ID
-$sql = "SELECT * FROM `klanten` WHERE id = $ids";
+$sql = "SELECT * FROM `klanten`";
 
 // $sql = "SELECT * FROM `medewerkers` WHERE name LIKE '%$search%' OR achternaam LIKE '%search%';";
 
@@ -23,7 +22,6 @@ if ($result == true) {
     if ($result->num_rows > 0) {
         // output data of each row
         while ($row = $result->fetch_assoc()) {
-            $ids = $_GET['id'];
             $name = $row['Voornaam'];
             $lname = $row['Achternaam'];
             $tel = $row['Tel'];
@@ -38,7 +36,7 @@ if ($result == true) {
 
 if (isset($_POST['change'])) {
 
-    $ids = $_GET['id'];
+
     $name = $_POST['name'];
     $lname = $_POST['Lname'];
     $tel = $_POST['tel'];
@@ -47,21 +45,11 @@ if (isset($_POST['change'])) {
 
 
 
-    $select = "SELECT * FROM `klanten` WHERE ID = '$ids'";
+    $select = "SELECT * FROM `klanten`";
 
     $result = mysqli_query($conn, $select);
     if (1 == 1) {
-        $update = "UPDATE `klanten` SET `ID`='$ids',`Achternaam`='$lname',`Voornaam`='$name',`Adres`='$adres',`Tel`='$tel' WHERE ID = '$ids'";
-        mysqli_query($conn, $update);
-        header('location:customers.php');
-
-    }
-}
-if (isset($_POST['delete'])) {
-    $select = "SELECT * FROM klanten WHERE ID = '$ids'";
-    $result = mysqli_query($conn, $select);
-    if (isset($_POST['delete'])) {
-        $update = "DELETE FROM klanten WHERE `klanten`.`ID` = $ids";
+        $update = "INSERT INTO `klanten`(`Achternaam`, `Voornaam`, `Adres`, `Tel`) VALUES ('$name','$lname','$adres','$tel')";
         mysqli_query($conn, $update);
         header('location:customers.php');
 
@@ -81,43 +69,40 @@ if (isset($_POST['delete'])) {
     <section>
         <div class="form-box1">
             <div class="form-value">
-                <form action="" method="POST">
-                    <button name="delete" class='delete'><ion-icon name="trash-outline"></ion-icon></button>
-                </form>
                 <form action="" method="post">
                     <h2>
-                        <?php echo $lang['Change'] ?>
+                        <?php echo $lang['Register'] ?>
                     </h2>
                         <div class="inputbox">
                             <ion-icon name="person-outline"></ion-icon>
-                            <input type="text" name="name" value="<?= $name ?>" required>
+                            <input type="text" name="name"  required>
                             <label for="">
                                 <?php echo $lang['Name'] ?>
                             </label>
                         </div>
                         <div class="inputbox">
                             <ion-icon name="person-outline"></ion-icon>
-                            <input type="text" name="Lname" value="<?php echo $lname; ?>">
+                            <input type="text" name="Lname"required>
                             <label for="">
                                 <?php echo $lang['Lname'] ?>
                             </label>
                         </div>
                         <div class="inputbox">
                             <ion-icon name="person-outline"></ion-icon>
-                            <input type="text" name="adres" value="<?php echo $adres; ?>" required>
+                            <input type="text" name="adres" required>
                             <label for="">
                                 <?php echo $lang['adres'] ?>
                             </label>
                         </div>
                         <div class="inputbox">
-                            <input type="number" name="tel" value="<?php echo $tel; ?>">
+                            <input type="number" name="tel">
                             <label for="">
                                 <?php echo $lang['pnumber'] ?>
                             </label>
                         </div>
                     <p></p>
                     <button type="submit" name='change' class='button'>
-                        <?php echo $lang['Change'] ?>
+                        <?php echo $lang['Register'] ?>
                     </button>
                 </form>
             </div>
