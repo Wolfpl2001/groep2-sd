@@ -5,8 +5,6 @@ include '../config.php';
 
 if (!isset($_SESSION['user_name']))
   header('Location: index.php');
-if ($_SESSION['user_type'] == 'user')
-  header('Location: index.php');
 
 $utype = $_SESSION['user_type'];
 $id = "";
@@ -47,23 +45,23 @@ if (isset($_POST['logout']))
   <section>
     <!-- Main menu line on top of site -->
     <div class='nav'>
-      <?php include '../nav.php'; ?>
+      <?php include '../nav_user.php'; ?>
       <form>
         <div class="inputbox">
           <input type="text" name="search" required>
           <label for="">
             <?php echo $lang['search'] ?>
           </label>
-          <a href="activities.php"><ion-icon name="close-outline"></ion-icon></a>
+          <a href="activities_user.php"><ion-icon name="close-outline"></ion-icon></a>
         </div>
       </form>
     </div>
     <div class="main-menu">
       <img src="../img/logo.jpg" alt="logo" class="logo">
       <!-- Lang Change -->
-      <a href="activities.php?lang=en"><img src="../img/eng.png" alt="Eng Lang Flag" class="flag-en"></a>
-      <a href="activities.php?lang=nl"><img src="../img/nl.png" alt="NL Lang Flag" class="flag-nl"></a>
-      <a href="register.php"><ion-icon name="add-circle-outline" class="add"></ion-icon></a>
+      <a href="activities_user.php?lang=en"><img src="../img/eng.png" alt="Eng Lang Flag" class="flag-en"></a>
+      <a href="activities_user.php?lang=nl"><img src="../img/nl.png" alt="NL Lang Flag" class="flag-nl"></a>
+      <a href="register_user.php"><ion-icon name="add-circle-outline" class="add"></ion-icon></a>
       <form method="post" class='formlout'>
         <button name='logout' class='logout'><ion-icon name="log-out-outline" class='logouticon'></ion-icon></button>
       </form>
@@ -87,7 +85,7 @@ if (isset($_POST['logout']))
             $date = $row['Datum'];
             $work = $row['Werkzaamheden'];
             $thours = $row['Totaal_Uren'];
-            echo "<tr><td><a href=bla.php?id=" . $id . ">" . $id . "</a></td><td><a href=bla.php?id=" . $id . ">" . $name . "</a></td><td><a href=bla.php?id=" . $id . ">" . $insert . "</a></td><td><a href=bla.php?id=" . $id . ">" . $lname . "</a></td><td><a href=bla.php?id=" . $id . ">" . $date . "</a></td><td><a href=bla.php?id=" . $id . ">" . $work . "</a></td><td><a href=bla.php?id=" . $id . ">" . $thours . "</a></td></tr>";
+            echo "<tr><td>" . $id . "</td><td>" . $name . "</td><td>" . $insert . "</td><td>" . $lname . "</td><td>" . $date . "</td><td>" . $work . "</td><td>" . $thours . "</td></tr>";
           }
           echo "</table>";
         } else {

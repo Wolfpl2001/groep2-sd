@@ -3,8 +3,6 @@ session_start();
 include '../config.php';
 if (!isset($_SESSION['user_name']))
   header('Location: ../index.php');
-if ($_SESSION['user_type'] == 'user')
-  header('Location: ../index.php');
 $uname = $_SESSION['user_name'];
 $utype = $_SESSION['user_type'];
 $lname = $_SESSION['user_lname'];
@@ -42,15 +40,15 @@ $result = $conn->query($sql);
         <!--<h3 class="center"><?php echo $lang['Welcome'] ?> <?php echo $utype ?> <?php echo $uname ?> <?php echo $lname ?></h3><h3 class=color></h3>-->
       </div>
       <!-- Lang Change -->
-      <a href="main.php?lang=en"><img src="../img/eng.png" alt="Eng Lang Flag" class="flag-en"></a>
-      <a href="main.php?lang=nl"><img src="../img/nl.png" alt="NL Lang Flag" class="flag-nl"></a>
+      <a href="user_page.php?lang=en"><img src="../img/eng.png" alt="Eng Lang Flag" class="flag-en"></a>
+      <a href="user_page.php?lang=nl"><img src="../img/nl.png" alt="NL Lang Flag" class="flag-nl"></a>
       <a href="URS.php"><ion-icon name="hourglass-outline" class="hreg"></ion-icon></a>
       <form method="post" class='formlout'>
         <button name='logout' class='logout'><ion-icon name="log-out-outline" class='logouticon'></ion-icon></button>
       </form>
     </div>
 
-    <?php include '../nav.php'; ?>
+    <?php include '../nav_user.php'; ?>
 
     <table class="table1">
       <tr>
@@ -71,9 +69,9 @@ $result = $conn->query($sql);
               $Titel = $row['Titel'];
               $Omschrijving = $row['Omschrijving'];
               $Aanvraagdatum = $row['Aanvraagdatum'];
-              $Benodigde = $row['Benodigde kennis'];
+              $Benodigde = $row['Benodigde_kennis'];
               $Contact = $row['Contact'];
-              $tel = $row['Telefoon Nummer'];
+              $tel = $row['Telefoon_Nummer'];
               echo "<tr class='table-db'><td>" . $id . "</td><td>" . $kid . "</td><td>" . $Titel . "</td><td>" . $Omschrijving . "</td><td>" . $Aanvraagdatum . "</td><td>" . $Benodigde . "</td><td>" . $Contact . "</td><td>" . $tel . "</td></tr>";
             }
             echo "</table>";
