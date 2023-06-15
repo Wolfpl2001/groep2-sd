@@ -7,21 +7,19 @@ if ($_SESSION['user_type'] == 'user')
 
 include '../config.php';
 
-$ids = $_GET['id'];
+
 
 //$search = $_GET['search'];
 // Retrieve data for the specified ID
-$sql = "SELECT werkzaamheden.ID, werkzaamheden.medewerkerID,werkzaamheden.Datum, werkzaamheden.Starttijd, werkzaamheden.Pauze, werkzaamheden.Eindtijd, werkzaamheden.Werkzaamheden, werkzaamheden.Totaal_Uren FROM medewerkers INNER JOIN werkzaamheden ON medewerkers.ID = werkzaamheden.medewerkerID WHERE werkzaamheden.ID = $ids";
+$sql = "SELECT opdrachten.ID, opdrachten.KlantID,opdrachten.Titel, opdrachten.Omschrijving, opdrachten.Aanvraagdatum, opdrachten.Benodigde_kennis, opdrachten.Contact, opdrachten.Telefoon_Nummer, opdrachten.KlantID  FROM klanten INNER JOIN opdrachten ON klanten.ID = opdrachten.KlantID";
 
 $utype = $_SESSION['user_type'];
-$ids = $_GET['id'];
-$klant = '';
-$indate = '';
-$stime = '';
-$br = '';
-$etime = '';
-$work = '';
-$tu = '';
+$klant = "";
+$title = "";
+$om = "";
+$bk = "";
+$contact = "";
+$tel = "";
 $uname = $_SESSION['user_name'];
 // $sql = "SELECT * FROM `medewerkers` WHERE name LIKE '%$search%' OR achternaam LIKE '%search%';";
 
@@ -30,13 +28,13 @@ if ($result == true) {
     if ($result->num_rows > 0) {
         // output data of each row
         while ($row = $result->fetch_assoc()) {
-            $mid = $row['medewerkerID'];
-            $indate = $row['Datum'];
-            $stime = $row['Starttijd'];
-            $br = $row['Pauze'];
-            $etime = $row['Eindtijd'];
-            $work = $row['Werkzaamheden'];
-            $tu = $row['Totaal_Uren'];
+            $klant = $row['KlantID'];
+            $title = $row['Titel'];
+            $om = $row['Omschrijving'];
+            $date = $row['Aanvraagdatum'];
+            $bk = $row['Benodigde_kennis'];
+            $contact = $row['Contact'];
+            $tel = $row['Telefoon_Nummer'];
         }
     } else {
         echo "0 results";
@@ -47,33 +45,25 @@ if ($result == true) {
 
 if (isset($_POST['change'])) {
 
-    $mid = $_POST['WorkerID'];
-    $indate = $_POST['Datum'];
-    $stime = $_POST['Starttijd'];
-    $etime = $_POST['Eindtijd'];
-    $work = $_POST['Werkzaamheden'];
-    $tu = $_POST['Totaal'];
-  
+    $id = $_GET['id'];
+    $klant = $_POST['KID'];
+    $title = $_POST['titel'];
+    $om = $_POST['omschrijving'];
+    $date = $_POST['aanvraagdatum'];
+    $bk = $_POST['benodigde_kennis'];
+    $contact = $_POST['contact'];
+    $tel = $_POST['telefoon_Nummer'];
 
 
 
-    $select = "SELECT werkzaamheden.ID, werkzaamheden.medewerkerID,werkzaamheden.Datum, werkzaamheden.Starttijd, werkzaamheden.Pauze, werkzaamheden.Eindtijd, werkzaamheden.Werkzaamheden, werkzaamheden.Totaal_Uren FROM medewerkers INNER JOIN werkzaamheden ON medewerkers.ID = werkzaamheden.medewerkerID WHERE werkzaamheden.ID = $ids";
+
+    $select = "SELECT opdrachten.ID, klanten.Voornaam,opdrachten.Titel, opdrachten.Omschrijving, opdrachten.Aanvraagdatum, opdrachten.Benodigde_kennis, opdrachten.Contact, opdrachten.Telefoon_Nummer  FROM klanten INNER JOIN opdrachten ON klanten.ID = opdrachten.KlantID WHERE opdrachten.ID='$id'";
 
     $result = mysqli_query($conn, $select);
-    if ($mid==$mid) {
-        $update = "UPDATE `werkzaamheden` SET `medewerkerID`='$mid',`Datum`='$indate',`Starttijd`='$stime',`Eindtijd`='$etime',`Werkzaamheden`='$work' WHERE ID = $ids";
+    if ($id==$ids) {
+        $update = "INSERT INTO `opdrachten`( `KlantID`, `Titel`, `Omschrijving`, `Aanvraagdatum`, `Benodigde_kennis`, `Contact`, `Telefoon_Nummer`) VALUES ('$klant','$title','$om','$date','$bk','$contact','$tel')";
         mysqli_query($conn, $update);
-        header('location:activities.php');
-
-    }
-}
-if (isset($_POST['delete'])) {
-    $select = "SELECT * FROM werkzaamheden WHERE ID = '$ids'";
-    $result = mysqli_query($conn, $select);
-    if (isset($_POST['delete'])) {
-        $update = "DELETE FROM `werkzaamheden` WHERE ID = '$ids'";
-        mysqli_query($conn, $update);
-        header('location:activities.php');
+        header('location:assignmensts.php');
 
     }
 }
@@ -92,28 +82,25 @@ if (isset($_POST['delete'])) {
     <section>
         <div class="form-box1">
             <div class="form-value">
-                <form action="" method="POST">
-                    <button name="delete" class='delete'><ion-icon name="trash-outline"></ion-icon></button>
-                </form>
                 <form action="" method="post">
                     <h2>
-                        <?php echo $lang['Change'] ?>
+                        <?php echo $lang['Register'] ?>
                     </h2>
 
                     <div class='secondtable'>
                         <div class="inputbox">
                             <?php
-                            $info = "SELECT `ID`, `Achternaam`, `Voornaam` FROM `medewerkers`";
+                            $info = "SELECT `ID`, `Achternaam`, `Voornaam` FROM `klanten`";
                             $result1 = mysqli_query($conn, $info);
                             if ($result1 == true) {
                                 if ($result1->num_rows > 0) {
                                     // output data of each row
-                                    echo "<select name= 'WorkerID'>";
+                                    echo "<select name= 'KID'>";
                                     while ($row = $result1->fetch_assoc()) { // Corrected variable name to $result1
                                         $id = $row['ID'];
                                         $fname = $row['Voornaam'];
                                         $lastn = $row['Achternaam'];
-                                        echo "<option value=" . $id . ($mid == $id ? " selected" : "") . ">" . $id."&nbsp". $fname."&nbsp". $lastn . "</option>";
+                                        echo "<option value=" . $id . ($id == $klant ? " selected" : "") . ">" . $id."&nbsp". $fname."&nbsp". $lastn . "</option>";
                                     }
                                     echo "</select>";
                                 } else {
@@ -124,43 +111,52 @@ if (isset($_POST['delete'])) {
                         </div>
                         <div class="inputbox">
                             <ion-icon name="person-outline"></ion-icon>
-                            <input type="text" name="Datum" value="<?php echo $indate; ?>">
+                            <input type="text" name="titel" required>
                             <label for="">
-                                <?php echo $lang['date'] ?>
+                                <?php echo $lang['title'] ?>
                             </label>
                         </div>
                     </div>
                     <div class='secondtable'>
                         <div class="inputbox">
                             <ion-icon name="person-outline"></ion-icon>
-                            <input type="text" name="Starttijd" value="<?php echo $stime; ?>" required>
+                            <input type="text" name="omschrijving" required>
                             <label for="">
-                                <?php echo $lang['stime'] ?>
+                                <?php echo $lang['description'] ?>
                             </label>
                         </div>
                         <div class="inputbox">
-                            <input type="text" name="Werkzaamheden" value="<?php echo $work; ?>">
+                            <input type="date" name="aanvraagdatum">
                             <label for="">
-                                <?php echo $lang['Activities'] ?>
+                                <?php echo $lang['adate'] ?>
                             </label>
                         </div>
                     </div>
                     <div class='secondtable'>
                         <div class="inputbox">
                             <ion-icon name="build-outline"></ion-icon>
-                            <input type="Text" name="Eindtijd" value="<?php echo $etime; ?>" required>
+                            <input type="Text" name="contact" required>
                             <label for="">
-                                <?php echo $lang['etime'] ?>
+                                <?php echo $lang['contact'] ?>
                             </label>
                         </div>
                         <div class="inputbox">
                             <ion-icon name="mail-outline"></ion-icon>
-                            <input type="text" name="Totaal" value="<?php echo $tu; ?>" disabled>
+                            <input type="number" name="telefoon_Nummer" required>
+                            <label for="">
+                                <?php echo $lang['pnumber'] ?>
+                            </label>
+                        </div>
+                    </div>
+                    <div class='secondtable'>
+                        <div class="inputbox1">
+                            <label for=""><?php echo $lang['rknowledge'] ?></label>
+                            <textarea type="Text" name="benodigde_kennis" rows="0" cols="90"required></textarea>
                         </div>
                     </div>
                     <p></p>
                     <button type="submit" name='change' class='button'>
-                        <?php echo $lang['Change'] ?>
+                        <?php echo $lang['Register'] ?>
                     </button>
                 </form>
             </div>

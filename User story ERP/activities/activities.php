@@ -22,7 +22,7 @@ $thours = "";
 $uname = $_SESSION['user_name'];
 // searching information from data base
 if (empty($_GET['search'])) {
-  $sql = "SELECT * FROM `werkzaamheden`";
+  $sql = "SELECT werkzaamheden.ID, medewerkers.Voornaam, medewerkers.Tussenvoegsel, medewerkers.Achternaam,werkzaamheden.Datum, werkzaamheden.Starttijd, werkzaamheden.Pauze, werkzaamheden.Eindtijd, werkzaamheden.Werkzaamheden, werkzaamheden.Totaal_Uren FROM medewerkers INNER JOIN werkzaamheden ON medewerkers.ID = werkzaamheden.medewerkerID";
 } else {
   $search_query = mysqli_real_escape_string($conn, $_GET['search']);
   $sql = "SELECT * FROM `werkzaamheden` WHERE ID LIKE '%$search_query%' OR Achternaam LIKE '%$search_query%' Or  Voornaam LIKE '%$search_query%' OR  Tussenvoegsel LIKE '%$search_query%' OR Datum LIKE '%$search_query%'OR Starttijd LIKE '%$search_query%' OR Pauze LIKE '%$search_query%' OR Eindtijd LIKE '%$search_query%'OR Werkzaamheden LIKE '%$search_query%'OR Total Uren LIKE '%$search_query%'";
@@ -61,7 +61,7 @@ $result = $conn->query($sql);
       <!-- Lang Change -->
       <a href="activities.php?lang=en"><img src="../img/eng.png" alt="Eng Lang Flag" class="flag-en"></a>
       <a href="activities.php?lang=nl"><img src="../img/nl.png" alt="NL Lang Flag" class="flag-nl"></a>
-      <a href="register.php"><ion-icon name="person-add-outline" class="add"></ion-icon></a>
+      <a href="register.php"><ion-icon name="add-circle-outline" class="add"></ion-icon></a>
       <form method="post" class='formlout'>
         <button name='logout' class='logout'><ion-icon name="log-out-outline" class='logouticon'></ion-icon></button>
       </form>
@@ -87,7 +87,7 @@ $result = $conn->query($sql);
             $br = $row['Pauze'];
             $etime = $row['Eindtijd'];
             $work = $row['Werkzaamheden'];
-            $thours = $row['Totaal Uren'];
+            $thours = $row['Totaal_Uren'];
             echo "<tr><td><a href=bla.php?id=" . $id . ">" . $id . "</a></td><td><a href=bla.php?id=" . $id . ">" . $name . "</a></td><td><a href=bla.php?id=" . $id . ">" . $insert . "</a></td><td><a href=bla.php?id=" . $id . ">" . $lname . "</a></td><td><a href=bla.php?id=" . $id . ">" . $date . "</a></td><td><a href=bla.php?id=" . $id . ">" . $stime . "</a></td><td><a href=bla.php?id=" . $id . ">" . $br . "</a></td><td><a href=bla.php?id=" . $id . ">" . $etime . "</a></td><td><a href=bla.php?id=" . $id . ">" . $work . "</a></td><td><a href=bla.php?id=" . $id . ">" . $thours . "</a></td></tr>";
           }
           echo "</table>";
