@@ -11,7 +11,7 @@ $ids = $_GET['id'];
 
 //$search = $_GET['search'];
 // Retrieve data for the specified ID
-$sql = "SELECT werkzaamheden.ID, werkzaamheden.medewerkerID,werkzaamheden.Datum, werkzaamheden.Starttijd, werkzaamheden.Pauze, werkzaamheden.Eindtijd, werkzaamheden.Werkzaamheden, werkzaamheden.Totaal_Uren FROM medewerkers INNER JOIN werkzaamheden ON medewerkers.ID = werkzaamheden.medewerkerID WHERE werkzaamheden.ID = $ids";
+$sql = "SELECT werkzaamheden.ID, werkzaamheden.medewerkerID,werkzaamheden.Datum, werkzaamheden.Werkzaamheden, werkzaamheden.Totaal_Uren FROM medewerkers INNER JOIN werkzaamheden ON medewerkers.ID = werkzaamheden.medewerkerID WHERE werkzaamheden.ID = $ids";
 
 $utype = $_SESSION['user_type'];
 $ids = $_GET['id'];
@@ -32,9 +32,6 @@ if ($result == true) {
         while ($row = $result->fetch_assoc()) {
             $mid = $row['medewerkerID'];
             $indate = $row['Datum'];
-            $stime = $row['Starttijd'];
-            $br = $row['Pauze'];
-            $etime = $row['Eindtijd'];
             $work = $row['Werkzaamheden'];
             $tu = $row['Totaal_Uren'];
         }
@@ -49,19 +46,17 @@ if (isset($_POST['change'])) {
 
     $mid = $_POST['WorkerID'];
     $indate = $_POST['Datum'];
-    $stime = $_POST['Starttijd'];
-    $etime = $_POST['Eindtijd'];
     $work = $_POST['Werkzaamheden'];
     $tu = $_POST['Totaal'];
   
 
 
 
-    $select = "SELECT werkzaamheden.ID, werkzaamheden.medewerkerID,werkzaamheden.Datum, werkzaamheden.Starttijd, werkzaamheden.Pauze, werkzaamheden.Eindtijd, werkzaamheden.Werkzaamheden, werkzaamheden.Totaal_Uren FROM medewerkers INNER JOIN werkzaamheden ON medewerkers.ID = werkzaamheden.medewerkerID WHERE werkzaamheden.ID = $ids";
+    $select = "SELECT werkzaamheden.ID, werkzaamheden.medewerkerID,werkzaamheden.Datum, werkzaamheden.Werkzaamheden, werkzaamheden.Totaal_Uren FROM medewerkers INNER JOIN werkzaamheden ON medewerkers.ID = werkzaamheden.medewerkerID WHERE werkzaamheden.ID = $ids";
 
     $result = mysqli_query($conn, $select);
     if ($mid==$mid) {
-        $update = "UPDATE `werkzaamheden` SET `medewerkerID`='$mid',`Datum`='$indate',`Starttijd`='$stime',`Eindtijd`='$etime',`Werkzaamheden`='$work' WHERE ID = $ids";
+        $update = "UPDATE `werkzaamheden` SET `medewerkerID`='$mid',`Datum`='$indate',`Werkzaamheden`='$work' WHERE ID = $ids";
         mysqli_query($conn, $update);
         header('location:activities.php');
 
@@ -132,25 +127,9 @@ if (isset($_POST['delete'])) {
                     </div>
                     <div class='secondtable'>
                         <div class="inputbox">
-                            <ion-icon name="person-outline"></ion-icon>
-                            <input type="text" name="Starttijd" value="<?php echo $stime; ?>" required>
-                            <label for="">
-                                <?php echo $lang['stime'] ?>
-                            </label>
-                        </div>
-                        <div class="inputbox">
                             <input type="text" name="Werkzaamheden" value="<?php echo $work; ?>">
                             <label for="">
                                 <?php echo $lang['Activities'] ?>
-                            </label>
-                        </div>
-                    </div>
-                    <div class='secondtable'>
-                        <div class="inputbox">
-                            <ion-icon name="build-outline"></ion-icon>
-                            <input type="Text" name="Eindtijd" value="<?php echo $etime; ?>" required>
-                            <label for="">
-                                <?php echo $lang['etime'] ?>
                             </label>
                         </div>
                         <div class="inputbox">
