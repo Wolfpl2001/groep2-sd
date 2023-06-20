@@ -61,6 +61,7 @@ if (isset($_POST['logout']))
       <a href="assignmensts.php?lang=en"><img src="../img/eng.png" alt="Eng Lang Flag" class="flag-en"></a>
       <a href="assignmensts.php?lang=nl"><img src="../img/nl.png" alt="NL Lang Flag" class="flag-nl"></a>
       <a href="register.php"><ion-icon name="add-circle-outline" class="add"></ion-icon></a>
+      <a href="../Facture.php"><ion-icon name="document-text-outline"class="pdf"></ion-icon></a>
       <form method="post" class='formlout'>
         <button name='logout' class='logout'><ion-icon name="log-out-outline" class='logouticon'></ion-icon></button>
       </form>

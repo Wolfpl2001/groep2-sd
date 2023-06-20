@@ -57,5 +57,10 @@ $lang = array(
     "Factuur"=>"Factuur",
     "tcosts"=>"Total Kosten",
     "Costs"=>"Kosten",
+    "hours"=>"Uur",
+    "Costshours" => "Kosten per uur",
+    "gfactuur" => "factuur genereren",
+    "fID"=> "ID van lijst",
+
 );
 ?>

@@ -57,5 +57,9 @@ $lang = array(
     "Factuur"=>"Invoice",
     "costs"=>"Total costs",
     "Costs"=>"Costs",
+    "hours"=>"Hours",
+    "Costshours" => "Hours costs",
+    "gfactuur" => "generate an invoice",
+    "fID"=> "ID from list",
 );
 ?>

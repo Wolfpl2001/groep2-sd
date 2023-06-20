@@ -1,8 +1,6 @@
 .logo {
-    width: 25%;
-    height: 10%;
+    width: 35%;
     top:5%;
-    left: 0px;
     position: absolute;
     size-adjust: 20%; 
     display: flex;

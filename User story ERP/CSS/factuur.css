@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins', sans-serif;
+}
+body{
+    background-color: #350194;
+}
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #350194;
+    background-position: center;
+    background-size: cover;
+}
+
+.form-box1 {
+    position: absolute;
+    width: 55%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 3%;
+    LEFT: 15%;
+
+}
+.form-value{
+    margin-left: 10%;
+    margin-top: 60%;
+}
+
+h2 {
+    font-size: 2em;
+    color: #fff;
+    text-align: center;
+}
+
+.inputbox {
+    position: relative;
+    margin: 30px 0;
+    width: 310px;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #fff;
+}
+.inputbox1{
+    width: 150%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    padding: 0 35px 0 5px;
+    color: #fff;
+    background-color: transparent;
+}
+textarea{
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 10px;
+    border-radius: 20px;
+}
+.imputbox:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.inputbox label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 1em;
+    pointer-events: none;
+    transition: .5s;
+}
+
+input:focus~label,
+input:valid~label {
+    top: -5px;
+}
+
+.inputbox input {
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+
+.inputbox ion-icon {
+    position: absolute;
+    right: 8px;
+    color: #fff;
+    font-size: 1.2em;
+    top: 20px;
+}
+
+.forget {
+    margin: -15px 0 15px;
+    font-size: .9em;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+
+.forget label input {
+    margin-right: 3px;
+
+}
+
+.forget label a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.forget label a:hover {
+    text-decoration: underline;
+}
+
+.button {
+    margin-top: 5%;
+    position: relative;
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    background: black;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    color: white;
+    top: 20px;
+}
+
+.delete {
+    position: relative;
+    margin-right: 10%;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    background: black;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    color: white;
+    top: 20px;
+    float: right;
+}
+
+.arrow {
+    position: absolute;
+    top: 15%;
+    left: 50px;
+    color: #fff;
+}
+
+.flag-nl {
+    position: absolute;
+    top: 2%;
+    right: 45px;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px
+}
+
+.flag-en {
+    position: absolute;
+    top: 2%;
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px
+}
+
+.used {
+    border: 1px solid rgb(255, 188, 3);
+}
+
+select {
+    background-color: black;
+    color: white;
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    content: center;
+    font-size: 1em;
+    border: none;
+}
+
+.error-msg {
+    margin: 10px 0;
+    display: block;
+    background-color: red;
+    color: #fff;
+    border-radius: 40px;
+
+}
+
+h1 {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+
+.secondtable {
+    margin-left: auto;
+    display: flex;
+}
+table{
+    border: 1px solid black;
+    width: 100%;
+}
+td{
+    border: 1px solid black;
+}
