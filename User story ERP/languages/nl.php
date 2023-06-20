@@ -53,5 +53,9 @@ $lang = array(
     "start_werk" => "Starten/doorgaan met werken",
     "pauze" => "Pauze",
     "eind_werk" => "Einde Werkdag",
+    "cinfo" => "Klant informaties",
+    "Factuur"=>"Factuur",
+    "tcosts"=>"Total Kosten",
+    "Costs"=>"Kosten",
 );
 ?>

@@ -1,0 +1,25 @@
+.logo {
+    width: 25%;
+    height: 10%;
+    top:5%;
+    left: 0px;
+    position: absolute;
+    size-adjust: 20%; 
+    display: flex;
+    background: transparent;
+    border-radius: 40px;
+}
+.info-text{
+    position: absolute;
+    padding-left: 45%;
+}
+.center{
+    padding-left: 30%;
+}
+.table{
+    border: 1px solid black;
+    width: 100%;
+}
+td{
+    border: 1px solid black;
+}
