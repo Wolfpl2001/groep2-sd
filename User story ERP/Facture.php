@@ -47,7 +47,6 @@ if (isset($_POST['change'])) {
     $klant = $_POST['KID'];
     $oid = $_POST['ID'];
     $langs = $_POST['langs'];
-    print_r($_POST);
     header('location:pdf.php?OpdrachtID='.$klant.'&IDUser='.$oid.'&lang='.$langs);
 
 }
@@ -96,8 +95,8 @@ if (isset($_POST['change'])) {
                         </div>
                         <div class="inputbox">
                             <select name ='langs'>
-                                <option value='EN'>Lang EN</option>
-                                <option value='NL'>Lang NL</option>
+                                <option value='en'>Lang EN</option>
+                                <option value='nl'>Lang NL</option>
                             </select>
                         </div>
                     </div>

@@ -222,9 +222,10 @@ h1 {
     display: flex;
 }
 table{
-    border: 1px solid black;
+    border: 1px solid white;
     width: 100%;
+    color:white;
 }
 td{
-    border: 1px solid black;
+    border: 1px solid white;
 }
